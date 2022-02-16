@@ -23,7 +23,7 @@ function M.setup(config)
 		{ name = "DiffText", style = "underline" },
 		{ name = "Directory" },
 		{ name = "EndOfBuffer", link = "NonText" },
-		{ name = "ErrorMsg", fg = cs.red, style = 'bold' },
+		{ name = "ErrorMsg", fg = cs.red, style = "bold" },
 		{ name = "FoldColumn" },
 		{ name = "Folded", fg = cs.fg, bg = cs.elevation.up1 },
 		{ name = "IncSearch", fg = cs.black, bg = cs.highlight },
@@ -41,7 +41,7 @@ function M.setup(config)
 		{ name = "NormalNC", link = "Normal" },
 		{ name = "Pmenu", bg = cs.elevation.up1 },
 		{ name = "PmenuSbar", bg = cs.elevation.up2 },
-		{ name = "PmenuSel", fg = cs.bg, bg = cs.highlight },
+		{ name = "PmenuSel", fg = cs.highlight, bg = cs.elevation.up2 },
 		{ name = "PmenuThumb", bg = cs.elevation.up3 },
 		{ name = "Question", fg = cs.green },
 		{ name = "QuickFixLine", fg = cs.black, bg = cs.highlight },
@@ -76,10 +76,13 @@ function M.setup(config)
     autocmd FileType fzf setlocal winhighlight=Normal:CabinElevateDown1
     autocmd FileType packer setlocal winhighlight=Normal:CabinElevateDown1
     autocmd FileType NeogitStatus setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType qf setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType help setlocal winhighlight=Normal:CabinElevateDown1
   augroup END
   ]])
 
 	theme.statusline = {
+		{ name = "StatusLineYellowBg", fg = cs.bg, bg = cs.yellow },
 		{ name = "StatusLineRed", fg = cs.red, bg = cs.elevation.up1 },
 		{ name = "StatusLineGreen", fg = cs.green, bg = cs.elevation.up1 },
 		{ name = "StatusLineYellow", fg = cs.yellow, bg = cs.elevation.up1 },
@@ -97,7 +100,7 @@ function M.setup(config)
 		{ name = "Constant", fg = cs.red },
 		{ name = "String", fg = cs.green },
 		{ name = "Character", fg = cs.bright_green },
-		{ name = "Number", fg = cs.magentan, style = 'bold' },
+		{ name = "Number", fg = cs.magentan, style = "bold" },
 		{ name = "Boolean", link = "Constant" },
 		{ name = "Float", link = "Number" },
 
@@ -112,7 +115,7 @@ function M.setup(config)
 		{ name = "Keyword", link = "Statement" },
 		{ name = "Exception", link = "Statement" },
 
-		{ name = "PreProc", fg = cs.blue},
+		{ name = "PreProc", fg = cs.blue },
 		{ name = "Include", link = "PreProc" },
 		{ name = "Define", link = "PreProc" },
 		{ name = "Macro", link = "PreProc" },
@@ -125,7 +128,7 @@ function M.setup(config)
 
 		{ name = "Special", fg = cs.fg },
 		{ name = "SpecialChar", link = "Character" },
-		{ name = "Tag", fg = cs.fg, style = 'bold' },
+		{ name = "Tag", fg = cs.fg, style = "bold" },
 		{ name = "Delimiter", link = "Special" },
 		{ name = "SpecialComment", link = "Special" },
 		{ name = "Debug", link = "Special" },
@@ -133,11 +136,39 @@ function M.setup(config)
 		{ name = "Underlined", style = "underline" },
 		{ name = "Ignore" },
 		{ name = "Error", fg = cs.fg, cs.red },
-		{ name = "Todo", fg = cs.bg, cs.yellow },
+		{ name = "Todo", fg = cs.bg, cs.highlight },
 	}
 
 	theme.plugins = {
 		-- LSP
+		{ name = "DiagnosticError", fg = cs.red },
+		{ name = "DiagnosticWarn", fg = cs.yellow },
+		{ name = "DiagnosticInfo", fg = cs.grey7 },
+		{ name = "DiagnosticHint", fg = cs.grey7 },
+		{ name = "DiagnosticUnderlineError", style = "underline", sp = cs.red },
+		{ name = "DiagnosticUnderlineWarn", style = "underline", sp = cs.yellow },
+		{ name = "DiagnosticUnderlineInfo", style = "underline", sp = cs.fg },
+		{ name = "DiagnosticUnderlineHint", style = "underline", sp = cs.fg },
+		{ name = "DiagnosticVirtualTextError", fg = cs.red, style = "italic" },
+		{ name = "DiagnosticVirtualTextWarn", fg = cs.yellow, style = "italic" },
+		{ name = "DiagnosticVirtualTextInfo", fg = cs.grey7, style = "italic" },
+		{ name = "DiagnosticVirtualTextHint", fg = cs.grey7, style = "italic" },
+		-- CMP
+
+		{ name = "CmpItemAbbr", fg = cs.fg },
+		{ name = "CmpItemAbbrDeprecated", fg = cs.red, sp = cs.red, style = "undercurl" },
+		{ name = "CmpItemAbbrMatch", fg = cs.highlight },
+		{ name = "CmpItemAbbrMatchFuzzy", fg = cs.highlight },
+		{ name = "CmpItemKind", fg = cs.grey7 },
+
+		-- TODO: Whatis this?
+		-- { name = "CmpItemMenu", fg = cs.purple }, The menu field's highlight group.
+
+		-- TODO: *CmpItemKind%KIND_NAME%*
+		--   The kind field's highlight group for specific `lsp.CompletionItemKind`.
+		--   If you want to overwrite only the method kind's highlight group, you can do this.
+		--      Example: highlight CmpItemKindMethod guibg=NONE guifg=Orange
+
 		-- GitSigns
 		{ name = "GitSignsAdd", fg = cs.green },
 		{ name = "GitSignsChange", fg = cs.yellow },
@@ -149,6 +180,58 @@ function M.setup(config)
 		{ name = "WhichKeyDesc", fg = cs.fg }, -- Identifier	the label of the key
 		{ name = "WhichKeyFloat", link = "CabinElevateDown1" }, -- NormalFloat	Normal in the popup window
 		{ name = "WhichKeyValue", fg = cs.fg }, -- Comment	used by plugins that provide values
+		-- Telescope
+		{ name = "TelescopeSelection", fg = cs.highlight, bg = cs.bg, style = "bold" },
+		{ name = "TelescopeSelectionCaret", fg = cs.bright_pink, style = "bold" },
+		{ name = "TelescopeMultiSelection", fg = cs.green, style = "italic" },
+		{ name = "TelescopeMultiIcon", fg = cs.green, style = "bold" },
+		{ name = "TelescopeNormal", fg = cs.fg, bg = cs.elevation.down1 },
+		{ name = "TelescopeBorder", fg = cs.elevation.up1 },
+		{ name = "TelescopeTitle", fg = cs.green },
+		{ name = "TelescopePromptCounter", fg = cs.green },
+		{ name = "TelescopeMatching", fg = cs.highlight, style = "bold" },
+		{ name = "TelescopePromptPrefix", fg = cs.pink, style = "bold" },
+    -- TODO: Need these?
+		-- match FZFBorder //
+		--  match FZFForeground //
+		--  match FZFHeader //
+		--  match FZFHighlight //
+		--  match FZFHighlightPlus //
+		--  match FZFInfo //
+		--  match FZFMarker //
+		--  match FZFPointer //
+		--  match FZFPrompt //
+		--  match FZFSpinner //
+    -- TODO: FZF
+		{ name = "FZFBorder" },
+		{ name = "FZFForeground", fg = cs.red },
+		{ name = "FZFForegroundPlus" },
+		{ name = "FZFHeader" },
+		{ name = "FZFHighlight", fg = cs.highlight },
+		{ name = "FZFHighlightPlus" },
+		{ name = "FZFInfo" },
+		{ name = "FZFMarker" },
+		{ name = "FZFPointer" },
+		{ name = "FZFPrompt" },
+		{ name = "FZFSpinner" },
+	}
+
+	-- Fzf
+  -- TODO: Move FZF global var somewhere more obvious
+	vim.g.fzf_colors = {
+		fg = { "fg", "FZFForeground" },
+		bg = { "bg", "FZFHighlight" },
+		hl = { "fg", "FZFHighlight" },
+		["fg+"] = { "fg", "FZFForegroundPlus" },
+		["bg+"] = { "bg", "FZFHighlightPlus" },
+		["hl+"] = { "fg", "FZFHighlightPlus" },
+		info = { "fg", "FZFInfo" },
+		border = { "fg", "FZFBorder" },
+		prompt = { "fg", "FZFPrompt" },
+		pointer = { "fg", "FZFPointer" },
+		marker = { "fg", "FZFMarker" },
+		spinner = { "fg", "FZFSpinner" },
+		header = { "fg", "FZFHeader" },
 	}
 
 	return theme
