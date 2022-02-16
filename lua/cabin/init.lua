@@ -48,23 +48,6 @@ function M.colorscheme()
 			vim.cmd(highlight_command)
 		end
 	end
-
-	-- Fzf
-	vim.g.fzf_colors = {
-		fg = { "fg", "FZFForeground" },
-		bg = { "bg", "FZFHighlight" },
-		hl = { "fg", "FZFHighlight" },
-		["fg+"] = { "fg", "FZFForegroundPlus" },
-		["bg+"] = { "bg", "FZFHighlightPlus" },
-		["hl+"] = { "fg", "FZFHighlightPlus" },
-		info = { "fg", "FZFInfo" },
-		border = { "fg", "FZFBorder" },
-		prompt = { "fg", "FZFPrompt" },
-		pointer = { "fg", "FZFPointer" },
-		marker = { "fg", "FZFMarker" },
-		spinner = { "fg", "FZFSpinner" },
-		header = { "fg", "FZFHeader" },
-	}
 end
 
 return M
