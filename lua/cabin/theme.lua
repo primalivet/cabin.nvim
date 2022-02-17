@@ -70,17 +70,6 @@ function M.setup(config)
 		{ name = "lCursor", link = "Cursor" },
 	}
 
-	vim.cmd([[
-  augroup CabinStyles
-    autocmd!
-    autocmd FileType fzf setlocal winhighlight=Normal:CabinElevateDown1
-    autocmd FileType packer setlocal winhighlight=Normal:CabinElevateDown1
-    autocmd FileType NeogitStatus setlocal winhighlight=Normal:CabinElevateDown1
-    autocmd FileType qf setlocal winhighlight=Normal:CabinElevateDown1
-    autocmd FileType help setlocal winhighlight=Normal:CabinElevateDown1
-  augroup END
-  ]])
-
 	theme.statusline = {
 		{ name = "StatusLineYellowBg", fg = cs.bg, bg = cs.yellow },
 		{ name = "StatusLineRed", fg = cs.red, bg = cs.elevation.up1 },
@@ -97,46 +86,46 @@ function M.setup(config)
 	theme.syntax = {
 		{ name = "Comment", fg = cs.grey7, style = "italic" },
 
-		{ name = "Constant", fg = cs.red },
+		{ name = "Constant", fg = cs.red},
 		{ name = "String", fg = cs.green },
-		{ name = "Character", fg = cs.bright_green },
-		{ name = "Number", fg = cs.magentan, style = "bold" },
-		{ name = "Boolean", link = "Constant" },
-		{ name = "Float", link = "Number" },
+		{ name = "Character", fg = cs.green, style = "italic" },
+		{ name = "Number", fg = cs.red },
+		{ name = "Boolean", fg = cs.red },
+		{ name = "Float", fg = cs.red },
 
-		{ name = "Identifier", fg = cs.cyan, style = "italic" },
+		{ name = "Identifier", fg = cs.cyan },
 		{ name = "Function", fg = cs.yellow, style = "bold" },
 
 		{ name = "Statement", fg = cs.orange },
-		{ name = "Conditional", link = "Statement" },
-		{ name = "Repeat", link = "Statement" },
-		{ name = "Label", link = "Statement" },
-		{ name = "Operator", link = "Statement" },
-		{ name = "Keyword", link = "Statement" },
-		{ name = "Exception", link = "Statement" },
+		{ name = "Conditional", fg = cs.orange },
+		{ name = "Repeat", fg = cs.orange },
+		{ name = "Label", fg = cs.cyan },
+		{ name = "Operator", fg = cs.yellow },
+		{ name = "Keyword", fg = cs.orange },
+		{ name = "Exception", fg = cs.orange },
 
-		{ name = "PreProc", fg = cs.blue },
-		{ name = "Include", link = "PreProc" },
-		{ name = "Define", link = "PreProc" },
-		{ name = "Macro", link = "PreProc" },
-		{ name = "PreCondit", link = "PreProc" },
+		{ name = "PreProc", fg = cs.magentan },
+		{ name = "Include", fg = cs.magentan },
+		{ name = "Define", fg = cs.magentan },
+		{ name = "Macro", fg = cs.magentan },
+		{ name = "PreCondit", fg = cs.magentan },
 
-		{ name = "Type", fg = cs.magentan },
+		{ name = "Type", fg = cs.blue },
 		{ name = "StorageClass", link = "Type" },
 		{ name = "Structure", link = "Type" },
 		{ name = "Typedef", link = "Type" },
 
 		{ name = "Special", fg = cs.fg },
-		{ name = "SpecialChar", link = "Character" },
-		{ name = "Tag", fg = cs.fg, style = "bold" },
-		{ name = "Delimiter", link = "Special" },
-		{ name = "SpecialComment", link = "Special" },
-		{ name = "Debug", link = "Special" },
+		{ name = "SpecialChar", fg = cs.green, style = "italic" },
+		{ name = "Tag", fg = cs.cyan },
+		{ name = "Delimiter", fg = cs.fg },
+		{ name = "SpecialComment", fg = cs.fg },
+		{ name = "Debug", fg = cs.fg},
 
 		{ name = "Underlined", style = "underline" },
 		{ name = "Ignore" },
-		{ name = "Error", fg = cs.fg, cs.red },
-		{ name = "Todo", fg = cs.bg, cs.highlight },
+		{ name = "Error", fg = cs.fg, bg = cs.red },
+		{ name = "Todo", fg = cs.bg, bg = cs.highlight },
 	}
 
 	theme.plugins = {
@@ -191,7 +180,7 @@ function M.setup(config)
 		{ name = "TelescopePromptCounter", fg = cs.green },
 		{ name = "TelescopeMatching", fg = cs.highlight, style = "bold" },
 		{ name = "TelescopePromptPrefix", fg = cs.pink, style = "bold" },
-    -- TODO: Need these?
+		-- TODO: Need these?
 		-- match FZFBorder //
 		--  match FZFForeground //
 		--  match FZFHeader //
@@ -202,7 +191,7 @@ function M.setup(config)
 		--  match FZFPointer //
 		--  match FZFPrompt //
 		--  match FZFSpinner //
-    -- TODO: FZF
+		-- TODO: FZF
 		{ name = "FZFBorder" },
 		{ name = "FZFForeground", fg = cs.red },
 		{ name = "FZFForegroundPlus" },
@@ -214,10 +203,145 @@ function M.setup(config)
 		{ name = "FZFPointer" },
 		{ name = "FZFPrompt" },
 		{ name = "FZFSpinner" },
+		-- Treesitter
+		-- TODO: Go through these
+		--   For C++/Dart attributes, annotations that can be attached to the code to" },
+		--   denote some kind of meta information." },
+		{ name = "TSAnnotation", link = "None" },
+		--   (unstable) TODO: docs" },
+		{ name = "TSAttribute", link = "None" },
+		--  For booleans." },
+		{ name = "TSBoolean", link = "Boolean" },
+		--  For characters." },
+		{ name = "TSCharacter", link = "Character" },
+		--  For comment blocks." },
+		{ name = "TSComment", link = "Comment" },
+		--  For keywords related to conditionnals." },
+		{ name = "TSConditional", link = "Conditional" },
+		--  For constants" },
+		{ name = "TSConstant", link = "Constant" },
+		--  For constant that are built in the language: `nil` in Lua." },
+		{ name = "TSConstBuiltin", link = "Constant" },
+		--  For constants that are defined by macros: `NULL` in C." },
+		{ name = "TSConstMacro", link = "Constant" },
+		--  For constructor calls and definitions: `{}` in Lua, and Java constructors." },
+		{ name = "TSConstructor", link = "None" },
+		--  For syntax/parser errors." },
+		{ name = "TSError", link = "Error" },
+		--  For exception related keywords." },
+		{ name = "TSException", link = "Exception" },
+		--  For fields." },
+		{ name = "TSField", link = "Normal" },
+		--  For floats." },
+		{ name = "TSFloat", link = "Float" },
+		--  For function (calls and definitions)." },
+		{ name = "TSFunction", link = "Function" },
+		--  For builtin functions: `table.insert` in Lua." },
+		{ name = "TSFuncBuiltin", link = "Function" },
+		--  For macro defined fuctions (calls and definitions): each `macro_rules` in" },
+		--  Rust." },
+		{ name = "TSFuncMacro", link = "Function" },
+		--  For includes: `#include` in C, `use` or `extern crate` in Rust, or `require`" },
+		--  in Lua." },
+		{ name = "TSInclude", link = "Include" },
+		--  For keywords that don't fall in previous categories." },
+		{ name = "TSKeyword", link = "Keyword" },
+		--  For keywords used to define a fuction." },
+		{ name = "TSKeywordFunction", link = "Keyword" },
+		--  for operators that are English words, e.g. `and`, `as`, `or`." },
+		{ name = "TSKeywordOperator", link = "Operator" },
+		--  For labels: `label:` in C and `:label:` in Lua." },
+		{ name = "TSLabel", link = "Label" },
+		--  For method calls and definitions." },
+		{ name = "TSMethod", link = "Function" },
+		--  For identifiers referring to modules and namespaces." },
+		{ name = "TSNamespace", link = "Identifier" },
+		--  For no highlighting." },
+		{ name = "TSNone", link = "None" },
+		--  For all numbers" },
+		{ name = "TSNumber", link = "Number" },
+		--  For any operator: `+`, but also `->` and `*` in C." },
+		{ name = "TSOperator", link = "Delimiter" },
+		--  For parameters of a function." },
+		{ name = "TSParameter", link = "None" },
+		--  For references to parameters of a function." },
+		{ name = "TSParameterReference", link = "None" },
+		--  Same as `{ name = "TSField", link = "`." },
+		{ name = "TSProperty", link = "Label" },
+		--  For delimiters ie: `.`" },
+		{ name = "TSPunctDelimiter", link = "None" },
+		--  For brackets and parens." },
+		{ name = "TSPunctBracket", link = "None" },
+		--  For special punctutation that does not fall in the catagories before." },
+		{ name = "TSPunctSpecial", link = "None" },
+		--  For keywords related to loops." },
+		{ name = "TSRepeat", link = "Repeat" },
+		--  For strings." },
+		{ name = "TSString", link = "String" },
+		--  For regexes." },
+		{ name = "TSStringRegex", link = "String" },
+		--  For escape characters within a string." },
+		{ name = "TSStringEscape", link = "None" },
+		--  For identifiers referring to symbols or atoms." },
+		{ name = "TSSymbol", link = "None" },
+		--  Tags like html tag names." },
+		{ name = "TSTag", link = "None" },
+		--  Tag delimiter like `<` `>` `/`" },
+		{ name = "TSTagDelimiter", link = "None" },
+		--  For strings considered text in a markup language." },
+		{ name = "TSText", link = "None" },
+		--  For text to be represented in bold." },
+		{ name = "TSStrong", link = "None" },
+		--  For text to be represented with emphasis." },
+		{ name = "TSEmphasis", link = "None" },
+		--  For text to be represented with an underline." },
+		{ name = "TSUnderline", link = "Underline" },
+		--  For strikethrough text." },
+		{ name = "TSStrike", link = "None" },
+		--  Text that is part of a title." },
+		{ name = "TSTitle", link = "None" },
+		--  Literal text." },
+		{ name = "TSLiteral", link = "None" },
+		--  Any URI like a link or email." },
+		{ name = "TSURI", link = "None" },
+		--  For LaTex-like math environments." },
+		{ name = "TSMath", link = "None" },
+		--  For footnotes, text references, citations." },
+		{ name = "TSTextReference", link = "None" },
+		--  For text environments of markup languages." },
+		{ name = "TSEnviroment", link = "None" },
+		--  For the name/the string indicating the type of text environment." },
+		{ name = "TSEnviromentName", link = "None" },
+		--  Text representation of an informational note." },
+		{ name = "TSNote", link = "None" },
+		--  Text representation of a warning note." },
+		{ name = "TSWarning", link = "WarningMsg" },
+		--  Text representation of a danger note." },
+		{ name = "TSDanger", link = "ErrorMsg" },
+		--  For types." },
+		{ name = "TSType", link = "Type" },
+		--  For builtin types." },
+		{ name = "TSTypeBuiltin", link = "Type" },
+		--  Any variable name that does not have another highlight." },
+		{ name = "TSVariable", link = "None" },
+		--  Variable names that are defined by the languages, like `this` or `self`." },
+		{ name = "TSVariableBuiltin", link = "Keyword" },
 	}
 
+	-- TODO: Move
+	vim.cmd([[
+  augroup CabinStyles
+    autocmd!
+    autocmd FileType fzf setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType packer setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType NeogitStatus setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType qf setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType help setlocal winhighlight=Normal:CabinElevateDown1
+  augroup END
+  ]])
+
 	-- Fzf
-  -- TODO: Move FZF global var somewhere more obvious
+	-- TODO: Move FZF global var somewhere more obvious
 	vim.g.fzf_colors = {
 		fg = { "fg", "FZFForeground" },
 		bg = { "bg", "FZFHighlight" },

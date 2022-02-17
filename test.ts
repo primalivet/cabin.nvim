@@ -1,9 +1,10 @@
 import path from 'path'
+const fs = require('fs')
 
 let pi = Math.PI
 const pi1 = 3.14
 
-type Thing = {
+export type Thing = {
   this: string
   that: number
 }
@@ -33,4 +34,5 @@ const fn2 = (arg1) => {
   }
 }
 
-fn1(new Date())
+
+module.exports = {fn: fn1(new Date())}
