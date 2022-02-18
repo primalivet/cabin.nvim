@@ -78,7 +78,7 @@ function M.setup(config)
 		{ name = "SpellRare", sp = cs.fg, style = "undercurl" },
 		-- Misc
 		{ name = "Conceal" },
-		{ name = "Directory" },
+		{ name = "Directory", fg = cs.magenta, style = "bold" },
 		{ name = "EndOfBuffer", link = "NonText" },
 		{ name = "NonText", fg = cs.grey },
 		{ name = "SpecialKey" },
@@ -138,7 +138,7 @@ function M.setup(config)
 
 		{ name = "Underlined", style = "underline" },
 		{ name = "Ignore" },
-		{ name = "Error", fg = cs.fg, bg = cs.red },
+		{ name = "Error", style = "underline", sp = cs.red },
 		{ name = "Todo", fg = cs.bg, bg = cs.highlight },
 
 		-- None, String, Emphasis is defined to support linking from other groups.
@@ -147,6 +147,63 @@ function M.setup(config)
 		{ name = "None", fg = cs.fg },
 		{ name = "Bold", style = cs.bold },
 		{ name = "Emphasis", style = cs.italic },
+	}
+
+	-- Netrw
+	theme.netrw = {
+		{ name = "netrwDir", link = "Directory" },
+		{ name = "netrwPlain", fg = cs.bright_magenta },
+		{ name = "netrwHdr", link = "netrwPlain" },
+		{ name = "netrwLex", link = "netrwPlain" },
+		{ name = "netrwYacc", link = "netrwPlain" },
+		{ name = "netrwComment", link = "Comment" },
+		{ name = "netrwHide", link = "netrwComment" },
+		{ name = "netrwHideSep", link = "netrwComment" },
+		{ name = "netrwComma", link = "netrwComment" },
+
+		{ name = "netrwHelpCmd", fg = cs.highlight, style = "bold" },
+		{ name = "netrwCmdNote", fg = cs.bright_green },
+
+		{ name = "netrwClassify", link = "Function" }, -- Directory trailing slash
+		{ name = "netrwLink", link = "netrwClassify" },
+		{ name = "netrwSymLink", link = "netrwClassify" },
+
+		-- TODO: Deside on netrw group below
+		{ name = "netrwVersion", link = "Identifier" },
+		{ name = "netrwExe", link = "PreProc" },
+		{ name = "netrwDateSep", link = "Delimiter" },
+		{ name = "netrwTreeBar", link = "Special" },
+		{ name = "netrwHidePat", link = "Statement" },
+		{ name = "netrwList", link = "Statement" },
+		{ name = "netrwQHTopic", link = "Number" },
+		{ name = "netrwCmdSep", link = "Delimiter" },
+		{ name = "netrwMarkFile", link = "TabLineSel" },
+		{ name = "netrwCoreDump", link = "WarningMsg" },
+		{ name = "netrwData", link = "Folded" },
+		{ name = "netrwLib", link = "DiffChange" },
+		{ name = "netrwMakefile", link = "DiffChange" },
+		{ name = "netrwPix", link = "Special" },
+
+		{ name = "netrwTimeSep", link = "netrwDateSep" },
+
+		{ name = "netrwGray", link = "Folded" },
+		{ name = "netrwBak", link = "netrwGray" },
+		{ name = "netrwCompress", link = "netrwGray" },
+		{ name = "netrwSpecFile", link = "netrwGray" },
+		{ name = "netrwObj", link = "netrwGray" },
+		{ name = "netrwTags", link = "netrwGray" },
+		{ name = "netrwTilde", link = "netrwGray" },
+		{ name = "netrwTmp", link = "netrwGray" },
+
+		--		{ name = "netrwSortBy", cleared = true},
+		--		{ name = "netrwSortSeq", cleared = true},
+		--		{ name = "netrwQuickHelp", cleared = true},
+		--		{ name = "netrwCopyTgt", cleared = true},
+		--		{ name = "netrwSpecial", cleared = true},
+		--		{ name = "netrwTime", cleared = true},
+		--		{ name = "netrwSizeDate", cleared = true},
+		--		{ name = "netrwTreeBarSpace", cleared = true},
+		--		{ name = "netrwSlash", cleared = true},
 	}
 
 	-- LSP Diagnostics
@@ -249,11 +306,14 @@ function M.setup(config)
 		{ name = "TroubleSignHint", link = "DiagnosticSignHint" },
 	}
 
-	-- TODO: Indent blankline
-	-- theme.indent_blankline = {}
-
-	-- TODO: Lualine
-	-- theme.lualine = {}
+	-- Indent blankline
+	theme.indent_blankline = {
+		{ name = "IndentBlanklineSpaceCharBlankline", style = "nocombine" },
+		{ name = "IndentBlanklineContextChar", fg = cs.highlight, style = "nocombine" },
+		{ name = "IndentBlanklineChar", fg = cs.grey6, style = "nocombine" },
+		{ name = "IndentBlanklineSpaceChar", style = "nocombine" },
+		{ name = "IndentBlanklineContextStart", style = "underline", sp = cs.highlight },
+	}
 
 	-- TODO: Feline
 	-- theme.lualine = {}
@@ -373,6 +433,7 @@ function M.setup(config)
     autocmd FileType NeogitStatus setlocal winhighlight=Normal:CabinElevateDown1
     autocmd FileType qf setlocal winhighlight=Normal:CabinElevateDown1
     autocmd FileType help setlocal winhighlight=Normal:CabinElevateDown1
+    autocmd FileType netrw setlocal winhighlight=Normal:CabinElevateDown1
   augroup END
   ]])
 
