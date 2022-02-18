@@ -9,7 +9,7 @@ export type Thing = {
   that: number
 }
 
-function fn1(arg1) {
+function fn1(arg1: string) {
   const refex = new RegExp(/^hello$/g)
   return arg1.match(refex)
 }

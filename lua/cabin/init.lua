@@ -13,9 +13,6 @@ local function set_vim_options()
 	end
 
 	vim.g.colors_name = "cabin"
-
-	-- TODO: Create the highlight string from groups
-	-- TODO: Run vim.cmd with the highlight string
 end
 
 -- HiGroup {
@@ -42,7 +39,7 @@ function M.colorscheme()
 	local config = { colors = colors }
 	local theme = require("cabin.theme").setup(config)
 
-	for _, section in pairs(theme) do
+	for _,section in pairs(theme) do
 		for _, group in ipairs(section) do
 			local highlight_command = stringify_group(group)
 			vim.cmd(highlight_command)
