@@ -79,8 +79,8 @@ function M.setup(config)
 		-- Misc
 		{ name = "Conceal" },
 		{ name = "Directory", fg = cs.magenta, style = "bold" },
+		{ name = "NonText", fg = cs.grey6 },
 		{ name = "EndOfBuffer", link = "NonText" },
-		{ name = "NonText", fg = cs.grey },
 		{ name = "SpecialKey" },
 		{ name = "Title" },
 		{ name = "VertSplit", fg = cs.elevation.up1, bg = config.options.fat_vert_split and cs.elevation.up1 or cs.none },
