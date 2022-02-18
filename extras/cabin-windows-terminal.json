@@ -1,0 +1,22 @@
+{
+  "name": "cabin",
+  "foreground": "#D3C7AE",
+  "background": "#1E1B17",
+  "cursorColor": "#F16C8C",
+  "black": "#171512",
+  "green": "#529E32",
+  "red": "#E94C09",
+  "yellow": "#FDBC18",
+  "blue": "#477CE3",
+  "cyan": "#18AC88",
+  "purple": "#BF236E",
+  "white": "#D3C7AE",
+  "brightBlack":  "#1E1B17",
+  "brightGreen": "#A0CF19",
+  "brightRed": "#F5841B",
+  "brightYellow": "#F8DB40",
+  "brightBlue": "#05ACF4",
+  "brightCyan": "#79DBBE",
+  "brightPurple": "#F16C8C",
+  "brightWhite": "#E6E1D1"
+}
