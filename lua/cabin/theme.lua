@@ -1,12 +1,7 @@
 local M = {}
 
 function M.setup(config)
-	local cs = config.colors
-	config.options = {
-		fat_vert_split = false,
-		colored_columns = true,
-	}
-
+	local cs = config.options.colors
 	local theme = {}
 
 	theme.base = {
@@ -148,6 +143,10 @@ function M.setup(config)
 		{ name = "Bold", style = cs.bold },
 		{ name = "Emphasis", style = cs.italic },
 	}
+
+  theme.quickfix = {
+		{ name = "qfFileName", fg = cs.bright_green, style = "bold" },
+  }
 
 	-- Netrw
 	theme.netrw = {
