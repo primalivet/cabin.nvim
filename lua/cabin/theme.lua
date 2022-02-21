@@ -95,7 +95,7 @@ function M.setup(config)
 	theme.syntax = {
 		{ name = "Comment", fg = cs.grey7, style = "italic" },
 
-		{ name = "Constant", fg = cs.red },
+		{ name = "Constant", fg = cs.cyan },
 		{ name = "String", fg = cs.bright_green },
 		{ name = "Character", fg = cs.bright_green, style = "italic" },
 		{ name = "Number", link = "Constant" },
