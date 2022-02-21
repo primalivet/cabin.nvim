@@ -3,4 +3,4 @@
 " lua package.loaded['cabin.config'] = nil
 " lua package.loaded['cabin.util'] = nil
 " lua package.loaded['cabin'] = nil
-lua require("cabin").load()
+lua require("cabin").colorscheme()

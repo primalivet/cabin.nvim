@@ -1,10 +1,11 @@
-local colors = require'cabin.colors'
+local colors = require("cabin.colors")
 local M = {}
 
 M.options = {
-		fat_vert_split = false,
-		colored_columns = true,
-		colors = colors,
+	fat_vert_split = false,
+	colored_columns = true,
+	colors = colors.setup(),
+  fear_of_the_dark = false,
 }
 
 M.set_options = function(options)

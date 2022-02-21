@@ -2,6 +2,16 @@ local M = {}
 
 function M.setup(config)
 	local cs = config.options.colors
+  if config.options.fear_of_the_dark then
+    cs.bg = cs.grey0
+    cs.elevation = {
+      down2 = cs.black,
+      down1 = cs.black,
+      up1 = cs.gre2,
+      up2 = cs.grey3,
+      up3 = cs.grey4,
+    }
+  end
 	local theme = {}
 
 	theme.base = {
@@ -56,7 +66,8 @@ function M.setup(config)
 		-- Statusline
 		{ name = "StatusLine", fg = cs.fg, bg = cs.elevation.up1 },
 		{ name = "StatusLineNC", bg = cs.bg },
-		-- Tabline
+		-- TabLine
+    -- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.elevation.down2 },
 		{ name = "TabLineFill", bg = cs.elevation.down2 },
 		{ name = "TabLineSel", fg = cs.highlight, bg = cs.bg },
@@ -144,9 +155,9 @@ function M.setup(config)
 		{ name = "Emphasis", style = cs.italic },
 	}
 
-  theme.quickfix = {
+	theme.quickfix = {
 		{ name = "qfFileName", fg = cs.bright_green, style = "bold" },
-  }
+	}
 
 	-- Netrw
 	theme.netrw = {
@@ -248,9 +259,33 @@ function M.setup(config)
 		{ name = "CmpItemAbbrMatch", fg = cs.highlight },
 		{ name = "CmpItemAbbrMatchFuzzy", fg = cs.highlight },
 		{ name = "CmpItemKind", fg = cs.grey7 },
+		{ name = "CmpItemMenu", fg = cs.grey6 },
 
-		-- TODO: Whatis this?
-		-- { name = "CmpItemMenu", fg = cs.purple }, The menu field's highlight group.
+		{ name = "CmpItemKindText", link = "CmpItemKind" },
+		{ name = "CmpItemKindMethod", link = "Function" },
+		{ name = "CmpItemKindFunction", link = "Function" },
+		{ name = "CmpItemKindConstructor", link = "CmpItemKind" },
+		{ name = "CmpItemKindField", link = "Label" },
+		{ name = "CmpItemKindVariable", link = "Identifier" },
+		{ name = "CmpItemKindClass", link = "Type" },
+		{ name = "CmpItemKindInterface", link = "Type" },
+		{ name = "CmpItemKindModule", link = "PreProc" },
+		{ name = "CmpItemKindProperty", link = "Label" },
+		{ name = "CmpItemKindUnit", link = "Constant" },
+		{ name = "CmpItemKindValue", link = "CmpItemKind" },
+		{ name = "CmpItemKindEnum", link = "Type" },
+		{ name = "CmpItemKindKeyword", link = "Keyword" },
+		{ name = "CmpItemKindSnippet", link = "CmpItemKind" },
+		{ name = "CmpItemKindColor", link = "CmpItemKind" },
+		{ name = "CmpItemKindFile", link = "netrwPlain" },
+		{ name = "CmpItemKindReference", link = "CmpItemKind" },
+		{ name = "CmpItemKindFolder", link = "netrwDir" },
+		{ name = "CmpItemKindEnumMember", link = "Type" },
+		{ name = "CmpItemKindConstant", link = "Constant" },
+		{ name = "CmpItemKindStruct", link = "Structure" },
+		{ name = "CmpItemKindEvent", link = "CmpItemKind" },
+		{ name = "CmpItemKindOperator", link = "Operator" },
+		{ name = "CmpItemKindTypeParameter", link = "Identifier" },
 
 		-- TODO: *CmpItemKind%KIND_NAME%*
 		--   The kind field's highlight group for specific `lsp.CompletionItemKind`.

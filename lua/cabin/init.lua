@@ -11,7 +11,7 @@ local M = {}
 --   style: String (Bold,Italics,Reverse)
 -- }
 
-M.load = function()
+M.colorscheme = function()
 	-- clear if not colorscheme default
 	if vim.g.colors_name then
 		vim.cmd("hi clear")
