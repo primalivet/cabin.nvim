@@ -54,7 +54,7 @@ function M.setup(config)
 		{ name = "Question", fg = cs.green },
 		-- Search and highlight
 		{ name = "IncSearch", fg = cs.black, bg = cs.highlight },
-		{ name = "MatchParen", fg = cs.highlight, style = "bold" },
+		{ name = "MatchParen", fg = cs.bright_magenta, style = "bold" },
 		{ name = "Search", fg = cs.black, bg = cs.highlight },
 		{ name = "Substitute", link = "Search" },
 		-- Pmenu
