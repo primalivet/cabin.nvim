@@ -224,7 +224,7 @@ function M.setup(config)
   }
 
 	-- LSP Diagnostics
-	theme.diagnostics = {
+	theme.lsp_diagnostics = {
 		{ name = "DiagnosticError", fg = cs.red },
 		{ name = "DiagnosticWarn", fg = cs.yellow },
 		{ name = "DiagnosticInfo", fg = cs.grey7 },
