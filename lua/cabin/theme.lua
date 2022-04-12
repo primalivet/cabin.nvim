@@ -216,6 +216,13 @@ function M.setup(config)
 		--		{ name = "netrwSlash", cleared = true},
 	}
 
+  -- LSP References
+  theme.lsp_references = {
+		{ name = "LspReferenceText", bg = cs.elevation.up2 },
+		{ name = "LspReferenceRead", bg = cs.elevation.up2 },
+		{ name = "LspReferenceWrite", bg = cs.elevation.up2 },
+  }
+
 	-- LSP Diagnostics
 	theme.diagnostics = {
 		{ name = "DiagnosticError", fg = cs.red },
