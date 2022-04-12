@@ -382,7 +382,7 @@ function M.setup(config)
 		{ name = "TelescopeBorder", fg = cs.elevation.up1 },
 		{ name = "TelescopeTitle", fg = cs.fg },
 		{ name = "TelescopePromptCounter", fg = cs.bright_blue },
-		{ name = "TelescopeMatching", fg = cs.highlight, style = "bold" },
+		{ name = "TelescopeMatching", fg = cs.bright_magenta, style = "bold" },
 		{ name = "TelescopePromptPrefix", fg = cs.bright_magenta, style = "bold" },
 	}
 
@@ -393,11 +393,11 @@ function M.setup(config)
 		{ name = "FZFForegroundPlus", fg = cs.highlight, style = "bold" }, -- fg = selected result
 		{ name = "FZFHeader", bg = cs.fg },
 		{ name = "FZFHighlight", fg = cs.highlight, bg = cs.elevation.down1 },
-		{ name = "FZFHighlightPlus", fg = cs.highlight, style = "bold" }, -- fg = fuzzy match in selected result
+		{ name = "FZFHighlightPlus", fg = cs.bright_magenta, style = "bold" }, -- fg = fuzzy match in selected result
 		{ name = "FZFInfo", fg = cs.fg },
 		{ name = "FZFMarker", fg = cs.bright_magenta },
 		{ name = "FZFPointer", fg = cs.bright_magenta },
-		{ name = "FZFPrompt", fg = cs.bright_blue },
+		{ name = "FZFPrompt", fg = cs.bright_magenta },
 		{ name = "FZFSpinner", fg = cs.bright_green },
 	}
 
