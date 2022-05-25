@@ -2,16 +2,16 @@ local M = {}
 
 function M.setup(config)
 	local cs = config.options.colors
-  if config.options.fear_of_the_dark then
-    cs.bg = cs.grey0
-    cs.elevation = {
-      down2 = cs.black,
-      down1 = cs.black,
-      up1 = cs.gre2,
-      up2 = cs.grey3,
-      up3 = cs.grey4,
-    }
-  end
+	if config.options.fear_of_the_dark then
+		cs.bg = cs.grey0
+		cs.elevation = {
+			down2 = cs.black,
+			down1 = cs.black,
+			up1 = cs.gre2,
+			up2 = cs.grey3,
+			up3 = cs.grey4,
+		}
+	end
 	local theme = {}
 
 	theme.base = {
@@ -67,7 +67,7 @@ function M.setup(config)
 		{ name = "StatusLine", fg = cs.fg, bg = cs.elevation.up1 },
 		{ name = "StatusLineNC", bg = cs.bg },
 		-- TabLine
-    -- TODO: problem when options pitch_black
+		-- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.elevation.down2 },
 		{ name = "TabLineFill", bg = cs.elevation.down2 },
 		{ name = "TabLineSel", fg = cs.highlight, bg = cs.bg },
@@ -216,12 +216,12 @@ function M.setup(config)
 		--		{ name = "netrwSlash", cleared = true},
 	}
 
-  -- LSP References
-  theme.lsp_references = {
+	-- LSP References
+	theme.lsp_references = {
 		{ name = "LspReferenceText", bg = cs.elevation.up2 },
 		{ name = "LspReferenceRead", bg = cs.elevation.up2 },
 		{ name = "LspReferenceWrite", bg = cs.elevation.up2 },
-  }
+	}
 
 	-- LSP Diagnostics
 	theme.lsp_diagnostics = {
@@ -257,6 +257,11 @@ function M.setup(config)
 		{ name = "DiagnosticVirtualTextWarn", fg = cs.yellow, style = "italic" },
 		{ name = "DiagnosticVirtualTextInfo", fg = cs.grey7, style = "italic" },
 		{ name = "DiagnosticVirtualTextHint", fg = cs.grey7, style = "italic" },
+	}
+
+	-- Copilot Suggestion
+	theme.copilot = {
+		{ name = "CopilotSuggestion", link = "Comment" },
 	}
 
 	-- CMP Completion engine
