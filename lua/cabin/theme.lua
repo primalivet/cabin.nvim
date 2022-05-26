@@ -388,7 +388,7 @@ function M.setup(config)
 		{ name = "TelescopeTitle", fg = cs.fg },
 		{ name = "TelescopePromptCounter", fg = cs.bright_blue },
 		{ name = "TelescopeMatching", fg = cs.bright_magenta, style = "bold" },
-		{ name = "TelescopePromptPrefix", fg = cs.bright_magenta, style = "bold" },
+		{ name = "TelescopePromptPrefix", fg = cs.bright_cyan, style = "bold" },
 	}
 
 	-- FZF
@@ -402,7 +402,7 @@ function M.setup(config)
 		{ name = "FZFInfo", fg = cs.fg },
 		{ name = "FZFMarker", fg = cs.bright_magenta },
 		{ name = "FZFPointer", fg = cs.bright_magenta },
-		{ name = "FZFPrompt", fg = cs.bright_magenta },
+		{ name = "FZFPrompt", fg = cs.bright_cyan },
 		{ name = "FZFSpinner", fg = cs.bright_green },
 	}
 
