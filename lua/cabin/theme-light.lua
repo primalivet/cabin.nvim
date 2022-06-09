@@ -1,79 +1,80 @@
 local M = {}
 
 function M.get_theme(config)
-	local cs = config.colors
-	cs.fg = cs.grey1
-	cs.bg = cs.grey9
-	cs.highlight = cs.yellow
-	cs.elevation = {
-		down2 = cs.grey8,
-		down1 = cs.grey8,
-		up1 = cs.grey10,
-		up2 = cs.grey7,
-		up3 = cs.grey6,
-	}
-	-- if config.fear_of_the_dark then
-	-- 	cs.bg = cs.grey0
-	-- 	cs.elevation = {
-	-- 		down2 = cs.black,
-	-- 		down1 = cs.black,
-	-- 		up1 = cs.gre2,
-	-- 		up2 = cs.grey3,
-	-- 		up3 = cs.grey4,
-	-- 	}
-	-- else
-	-- 	cs.elevation = {
-	-- 		down2 = cs.black,
-	-- 		down1 = cs.grey0,
-	-- 		up1 = cs.grey3,
-	-- 		up2 = cs.grey4,
-	-- 		up3 = cs.grey5,
-	-- 	}
-	-- end
 	local theme = {}
+	local palette = config.colors
+	local cs = {}
 
-	theme.base = {
+	cs.fg = palette.shade_dark4
+	cs.bg = palette.shade_light2
+	cs.highlight = palette.blue_dark -- Highlight: Interaction and selection in the UI
+	cs.success = palette.gree_dark
+	cs.warning = palette.yellow_dark
+	cs.failure = palette.red_dark
+	cs.info = palette.fg
+	cs.dimmed = palette.shade_dark8
+
+	cs.syntax_control = palette.green_dark -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
+	cs.syntax_symbols = palette.black -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
+	cs.syntax_dimmed = palette.cyan_dark -- Dimmed: Comments, LSP normal text, etc.
+	cs.syntax_types = palette.blue_medium -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
+	cs.syntax_func = palette.blue_dark -- Func: Functions and method calls
+	cs.syntax_string = palette.red_dark -- Strings: Strings and string like, e.g. regex and object keys
+	cs.syntax_constant = cs.fg -- Constants: Constants like "PI", "e", "true", "false" and numbers
+
+	cs.elevation = {
+		down2 = palette.shade_light8,
+		down1 = palette.shade_light7,
+		up1 = palette.shade_light4,
+		up2 = palette.shade_light5,
+		up3 = palette.shade_light6,
+	}
+
+	theme.predefined = {
 		-- Theme groups
 		{ name = "CabinElevateDown1", fg = cs.fg, bg = cs.elevation.down1 },
 		{ name = "CabinElevateDown2", fg = cs.fg, bg = cs.elevation.down2 },
+	}
+
+	theme.base = {
 		-- Normal
 		{ name = "Normal", fg = cs.fg, bg = cs.bg },
 		{ name = "NormalFloat", bg = cs.elevation.up1 },
 		{ name = "NormalNC", link = "Normal" },
 		-- Lines
-		{ name = "LineNr", fg = cs.grey7 },
+		{ name = "LineNr", fg = cs.dimmed },
 		{ name = "LineNrAbove", link = "LineNr" },
 		{ name = "LineNrBelow", link = "LineNr" },
-		{ name = "Folded", fg = cs.grey8, bg = cs.elevation.up1 },
-		{ name = "QuickFixLine", fg = cs.black, bg = cs.highlight },
+		{ name = "Folded", fg = cs.fg, bg = cs.elevation.up1 },
+		{ name = "QuickFixLine", fg = cs.bg, bg = cs.highlight },
 		-- Columns
-		{ name = "ColorColumn", bg = cs.red },
-		{ name = "FoldColumn", fg = cs.grey8, bg = config.colored_columns and cs.elevation.up2 or cs.none },
+		{ name = "ColorColumn", bg = cs.failure },
+		{ name = "FoldColumn", fg = cs.dimmed, bg = config.colored_columns and cs.elevation.up2 or cs.none },
 		{ name = "SignColumn", bg = config.colored_columns and cs.elevation.up1 or cs.none },
 		-- Cursor
-		{ name = "Cursor", fg = cs.black, bg = cs.bright_magenta },
+		{ name = "Cursor", fg = cs.bg, bg = cs.fg },
 		{ name = "CursorColumn", bg = cs.elevation.up1 },
 		{ name = "CursorIM", link = "Cursor" },
 		{ name = "CursorLine", bg = cs.elevation.up1 },
 		{ name = "CursorLineNr" },
 		{ name = "lCursor", link = "Cursor" },
 		-- Diffs
-		{ name = "DiffAdd", fg = cs.green, bg = cs.none },
-		{ name = "DiffChange", fg = cs.yellow, bg = cs.none },
-		{ name = "DiffDelete", fg = cs.red, bg = cs.none },
+		{ name = "DiffAdd", fg = cs.success, bg = cs.none },
+		{ name = "DiffChange", fg = cs.warning, bg = cs.none },
+		{ name = "DiffDelete", fg = cs.failure, bg = cs.none },
 		{ name = "DiffText", style = "underline" },
 		-- Messages
-		{ name = "ErrorMsg", fg = cs.red, style = "bold" },
+		{ name = "ErrorMsg", fg = cs.failure, style = "bold" },
 		{ name = "ModeMsg", fg = cs.fg, style = "bold" },
 		{ name = "MoreMsg", fg = cs.fg, style = "bold" },
 		{ name = "MsgArea" },
 		{ name = "MsgSeparator", link = "MoreMsg" },
-		{ name = "WarningMsg", fg = cs.yellow, style = "bold" },
-		{ name = "Question", fg = cs.green },
+		{ name = "WarningMsg", fg = cs.warning, style = "bold" },
+		{ name = "Question", fg = cs.info },
 		-- Search and highlight
-		{ name = "IncSearch", fg = cs.black, bg = cs.highlight },
-		{ name = "MatchParen", fg = cs.bright_magenta, style = "bold" },
-		{ name = "Search", fg = cs.black, bg = cs.highlight },
+		{ name = "IncSearch", fg = cs.bg, bg = cs.highlight },
+		{ name = "MatchParen", fg = cs.highlight, style = "bold" },
+		{ name = "Search", fg = cs.bg, bg = cs.highlight },
 		{ name = "Substitute", link = "Search" },
 		-- Pmenu
 		{ name = "Pmenu", bg = cs.elevation.up1 },
@@ -96,14 +97,14 @@ function M.get_theme(config)
 		{ name = "Visual", bg = cs.elevation.up2 },
 		{ name = "VisualNOS", link = "Visual" },
 		-- Spell
-		{ name = "SpellBad", sp = cs.red, style = "undercurl" },
-		{ name = "SpellCap", sp = cs.yellow, style = "undercurl" },
+		{ name = "SpellBad", sp = cs.failure, style = "undercurl" },
+		{ name = "SpellCap", sp = cs.warning, style = "undercurl" },
 		{ name = "SpellLocal", sp = cs.fg, style = "undercurl" },
 		{ name = "SpellRare", sp = cs.fg, style = "undercurl" },
 		-- Misc
 		{ name = "Conceal" },
-		{ name = "Directory", fg = cs.magenta, style = "bold" },
-		{ name = "NonText", fg = cs.grey6 },
+		{ name = "Directory", fg = cs.fg, style = "bold" },
+		{ name = "NonText", fg = cs.dimmed },
 		{ name = "EndOfBuffer", link = "NonText" },
 		{ name = "SpecialKey" },
 		{ name = "Title" },
@@ -111,58 +112,48 @@ function M.get_theme(config)
 		{ name = "Whitespace", link = "NonText" },
 	}
 
-	theme.statusline = {
-		{ name = "StatusLineYellowBg", fg = cs.bg, bg = cs.yellow },
-		{ name = "StatusLineRed", fg = cs.red, bg = cs.elevation.up1 },
-		{ name = "StatusLineGreen", fg = cs.green, bg = cs.elevation.up1 },
-		{ name = "StatusLineYellow", fg = cs.yellow, bg = cs.elevation.up1 },
-		{ name = "StatusLineBlue", fg = cs.blue, bg = cs.elevation.up1 },
-		{ name = "StatusLineCyan", fg = cs.cyan, bg = cs.elevation.up1 },
-		{ name = "StatusLineMagenta", fg = cs.magenta, bg = cs.elevation.up1 },
-	}
-
 	theme.syntax = {
-		{ name = "Comment", fg = cs.grey7, style = "italic" },
+		{ name = "Comment", fg = cs.syntax_dimmed, style = "italic" },
 
-		{ name = "Constant", fg = cs.cyan },
-		{ name = "String", fg = cs.bright_green },
-		{ name = "Character", fg = cs.bright_green, style = "italic" },
+		{ name = "Constant", fg = cs.syntax_constant },
+		{ name = "String", fg = cs.syntax_string },
+		{ name = "Character", fg = cs.syntax_string, style = "italic" },
 		{ name = "Number", link = "Constant" },
 		{ name = "Boolean", link = "Constant" },
 		{ name = "Float", link = "Number" },
 
-		{ name = "Identifier", fg = cs.fg },
-		{ name = "Function", fg = cs.yellow, style = "bold" },
+		{ name = "Identifier", fg = cs.fg, style = "bold" },
+		{ name = "Function", fg = cs.syntax_func, style = "bold" },
 
-		{ name = "Statement", fg = cs.bright_red },
+		{ name = "Statement", fg = cs.syntax_control, style = "bold" },
 		{ name = "Conditional", link = "Statement" },
 		{ name = "Repeat", link = "Statement" },
-		{ name = "Label", fg = cs.green },
-		{ name = "Operator", fg = cs.yellow },
+		{ name = "Label", fg = cs.fg },
+		{ name = "Operator", fg = cs.syntax_symbols, style = "bold" },
 		{ name = "Keyword", link = "Statement" },
 		{ name = "Exception", link = "Statement" },
 
-		{ name = "PreProc", fg = cs.bright_magenta },
+		{ name = "PreProc", fg = cs.dimmed },
 		{ name = "Include", link = "PreProc" },
 		{ name = "Define", link = "PreProc" },
 		{ name = "Macro", link = "PreProc" },
 		{ name = "PreCondit", link = "PreProc" },
 
-		{ name = "Type", fg = cs.bright_cyan },
+		{ name = "Type", fg = cs.syntax_types },
 		{ name = "StorageClass", link = "Type" },
 		{ name = "Structure", link = "Type" },
 		{ name = "Typedef", link = "Type" },
 
 		{ name = "Special", fg = cs.fg },
 		{ name = "SpecialChar", link = "Character" },
-		{ name = "Tag", fg = cs.green, style = "bold" },
+		{ name = "Tag", fg = cs.fg, style = "bold" },
 		{ name = "Delimiter", fg = cs.fg },
 		{ name = "SpecialComment", fg = cs.fg },
 		{ name = "Debug", fg = cs.fg },
 
 		{ name = "Underlined", style = "underline" },
 		{ name = "Ignore" },
-		{ name = "Error", style = "underline", sp = cs.red },
+		{ name = "Error", style = "underline", sp = cs.failure },
 		{ name = "Todo", fg = cs.bg, bg = cs.highlight },
 
 		-- None, String, Emphasis is defined to support linking from other groups.
@@ -174,13 +165,13 @@ function M.get_theme(config)
 	}
 
 	theme.quickfix = {
-		{ name = "qfFileName", fg = cs.bright_green, style = "bold" },
+		{ name = "qfFileName", fg = cs.fg, style = "italic" },
 	}
 
 	-- Netrw
 	theme.netrw = {
 		{ name = "netrwDir", link = "Directory" },
-		{ name = "netrwPlain", fg = cs.bright_magenta },
+		{ name = "netrwPlain", fg = cs.fg },
 		{ name = "netrwHdr", link = "netrwPlain" },
 		{ name = "netrwLex", link = "netrwPlain" },
 		{ name = "netrwYacc", link = "netrwPlain" },
@@ -190,7 +181,7 @@ function M.get_theme(config)
 		{ name = "netrwComma", link = "netrwComment" },
 
 		{ name = "netrwHelpCmd", fg = cs.highlight, style = "bold" },
-		{ name = "netrwCmdNote", fg = cs.bright_green },
+		{ name = "netrwCmdNote", fg = cs.highlight },
 
 		{ name = "netrwClassify", link = "Function" }, -- Directory trailing slash
 		{ name = "netrwLink", link = "netrwClassify" },
@@ -243,38 +234,38 @@ function M.get_theme(config)
 
 	-- LSP Diagnostics
 	theme.lsp_diagnostics = {
-		{ name = "DiagnosticError", fg = cs.red },
-		{ name = "DiagnosticWarn", fg = cs.yellow },
-		{ name = "DiagnosticInfo", fg = cs.grey7 },
-		{ name = "DiagnosticHint", fg = cs.grey7 },
+		{ name = "DiagnosticError", fg = cs.failure },
+		{ name = "DiagnosticWarn", fg = cs.warning },
+		{ name = "DiagnosticInfo", fg = cs.info },
+		{ name = "DiagnosticHint", fg = cs.info },
 		{
 			name = "DiagnosticSignError",
-			fg = cs.red,
+			fg = cs.failure,
 			bg = config.colored_columns and cs.elevation.up1 or cs.none,
 		},
 		{
 			name = "DiagnosticSignWarn",
-			fg = cs.yellow,
+			fg = cs.warning,
 			bg = config.colored_columns and cs.elevation.up1 or cs.none,
 		},
 		{
 			name = "DiagnosticSignInfo",
-			fg = cs.grey7,
+			fg = cs.info,
 			bg = config.colored_columns and cs.elevation.up1 or cs.none,
 		},
 		{
 			name = "DiagnosticSignHint",
-			fg = cs.grey7,
+			fg = cs.info,
 			bg = config.colored_columns and cs.elevation.up1 or cs.none,
 		},
-		{ name = "DiagnosticUnderlineError", style = "underline", sp = cs.red },
-		{ name = "DiagnosticUnderlineWarn", style = "underline", sp = cs.yellow },
-		{ name = "DiagnosticUnderlineInfo", style = "underline", sp = cs.grey7 },
-		{ name = "DiagnosticUnderlineHint", style = "underline", sp = cs.grey7 },
-		{ name = "DiagnosticVirtualTextError", fg = cs.red, style = "italic" },
-		{ name = "DiagnosticVirtualTextWarn", fg = cs.yellow, style = "italic" },
-		{ name = "DiagnosticVirtualTextInfo", fg = cs.grey7, style = "italic" },
-		{ name = "DiagnosticVirtualTextHint", fg = cs.grey7, style = "italic" },
+		{ name = "DiagnosticUnderlineError", style = "underline", sp = cs.failure },
+		{ name = "DiagnosticUnderlineWarn", style = "underline", sp = cs.warning },
+		{ name = "DiagnosticUnderlineInfo", style = "underline", sp = cs.info },
+		{ name = "DiagnosticUnderlineHint", style = "underline", sp = cs.info },
+		{ name = "DiagnosticVirtualTextError", fg = cs.failure, style = "italic" },
+		{ name = "DiagnosticVirtualTextWarn", fg = cs.warning, style = "italic" },
+		{ name = "DiagnosticVirtualTextInfo", fg = cs.info, style = "italic" },
+		{ name = "DiagnosticVirtualTextHint", fg = cs.info, style = "italic" },
 	}
 
 	-- Copilot Suggestion
@@ -285,12 +276,11 @@ function M.get_theme(config)
 	-- CMP Completion engine
 	theme.cmp = {
 		{ name = "CmpItemAbbr", fg = cs.fg },
-		{ name = "CmpItemAbbrDeprecated", fg = cs.red, sp = cs.red, style = "undercurl" },
+		{ name = "CmpItemAbbrDeprecated", fg = cs.failure, sp = cs.failure, style = "undercurl" },
 		{ name = "CmpItemAbbrMatch", fg = cs.highlight },
 		{ name = "CmpItemAbbrMatchFuzzy", fg = cs.highlight },
-		{ name = "CmpItemKind", fg = cs.grey7 },
-		{ name = "CmpItemMenu", fg = cs.grey6 },
-
+		{ name = "CmpItemKind", fg = cs.dimmed },
+		{ name = "CmpItemMenu", fg = cs.dimmed },
 		{ name = "CmpItemKindText", link = "CmpItemKind" },
 		{ name = "CmpItemKindMethod", link = "Function" },
 		{ name = "CmpItemKindFunction", link = "Function" },
@@ -325,9 +315,9 @@ function M.get_theme(config)
 
 	-- GitSigns
 	theme.gitsigns = {
-		{ name = "GitSignsAdd", fg = cs.green, bg = config.colored_columns and cs.elevation.up1 or cs.none },
-		{ name = "GitSignsChange", fg = cs.yellow, bg = config.colored_columns and cs.elevation.up1 or cs.none },
-		{ name = "GitSignsDelete", fg = cs.red, bg = config.colored_columns and cs.elevation.up1 or cs.none },
+		{ name = "GitSignsAdd", fg = cs.success, bg = config.colored_columns and cs.elevation.up1 or cs.none },
+		{ name = "GitSignsChange", fg = cs.warning, bg = config.colored_columns and cs.elevation.up1 or cs.none },
+		{ name = "GitSignsDelete", fg = cs.failure, bg = config.colored_columns and cs.elevation.up1 or cs.none },
 	}
 
 	-- TODO: LSP Saga
@@ -342,21 +332,21 @@ function M.get_theme(config)
 	-- Trouble
 	theme.trouble = {
 		{ name = "TroubleNormal", link = "CabinElevateDown1" },
-		{ name = "TroubleFoldIcon", fg = cs.bright_magenta, style = "bold" },
+		{ name = "TroubleFoldIcon", fg = cs.dimmed, style = "bold" },
 		{ name = "TroubleSignInformation", link = "DiagnosticSignInfo" },
 		{ name = "TroubleSignOther", link = "TroubleSignInformation" },
-		{ name = "TroubleLocation", fg = cs.bright_magenta },
-		{ name = "TroubleCount ", fg = cs.bright_green, style = "bold" },
+		{ name = "TroubleLocation", link = "Normal" },
+		{ name = "TroubleCount ", fg = cs.fg, style = "bold" },
 
-		{ name = "TroubleText  ", link = "None" },
-		{ name = "TroubleTextError", link = "TroubleText" },
-		{ name = "TroubleTextWarning", link = "TroubleText" },
-		{ name = "TroubleTextInformation", link = "TroubleText" },
-		{ name = "TroubleTextHint", link = "TroubleText" },
+		{ name = "TroubleText", link = "None" },
+		{ name = "TroubleTextError", link = "DiagnosticError" },
+		{ name = "TroubleTextWarning", link = "DiagnosticWarn" },
+		{ name = "TroubleTextInformation", link = "DiagnosticInfo" },
+		{ name = "TroubleTextHint", link = "DiagnosticHint" },
 
 		{ name = "TroublePreview", link = "Search" },
 		{ name = "TroubleSource", link = "Comment" },
-		{ name = "TroubleFile  ", fg = cs.yellow },
+		{ name = "TroubleFile  ", link = "Normal" },
 		{ name = "TroubleIndent", link = "Comment" },
 		{ name = "TroubleCode  ", link = "Comment" },
 
@@ -374,7 +364,7 @@ function M.get_theme(config)
 	theme.indent_blankline = {
 		{ name = "IndentBlanklineSpaceCharBlankline", style = "nocombine" },
 		{ name = "IndentBlanklineContextChar", fg = cs.highlight, style = "nocombine" },
-		{ name = "IndentBlanklineChar", fg = cs.grey6, style = "nocombine" },
+		{ name = "IndentBlanklineChar", fg = cs.dimmed, style = "nocombine" }, -- TODO: use general group
 		{ name = "IndentBlanklineSpaceChar", style = "nocombine" },
 		{ name = "IndentBlanklineContextStart", style = "underline", sp = cs.highlight },
 	}
@@ -388,8 +378,8 @@ function M.get_theme(config)
 	-- Whichkey
 	theme.whichkey = {
 		{ name = "WhichKey", fg = cs.highlight, style = "bold" }, -- Function	the key
-		{ name = "WhichKeyGroup", fg = cs.red }, --Keyword	a group
-		{ name = "WhichKeySeparator", fg = cs.green }, --	DiffAdded	the separator between the key and its label
+		{ name = "WhichKeyGroup", fg = cs.fg }, --Keyword	a group
+		{ name = "WhichKeySeparator", fg = cs.dimmed }, --	DiffAdded	the separator between the key and its label
 		{ name = "WhichKeyDesc", fg = cs.fg }, -- Identifier	the label of the key
 		{ name = "WhichKeyFloat", link = "CabinElevateDown1" }, -- NormalFloat	Normal in the popup window
 		{ name = "WhichKeyValue", fg = cs.fg }, -- Comment	used by plugins that provide values
@@ -398,15 +388,15 @@ function M.get_theme(config)
 	-- Telescope
 	theme.telescope = {
 		{ name = "TelescopeSelection", fg = cs.highlight, bg = cs.elevation.up2, style = "bold" },
-		{ name = "TelescopeSelectionCaret", fg = cs.bright_magenta, style = "bold" },
-		{ name = "TelescopeMultiSelection", fg = cs.green, style = "italic" },
-		{ name = "TelescopeMultiIcon", fg = cs.green, style = "bold" },
+		{ name = "TelescopeSelectionCaret", fg = cs.highlight, style = "bold" },
+		{ name = "TelescopeMultiSelection", fg = cs.highlight, style = "italic" },
+		{ name = "TelescopeMultiIcon", fg = cs.highlight, style = "bold" },
 		{ name = "TelescopeNormal", fg = cs.fg, bg = cs.elevation.down1 },
 		{ name = "TelescopeBorder", fg = cs.elevation.up1 },
 		{ name = "TelescopeTitle", fg = cs.fg },
-		{ name = "TelescopePromptCounter", fg = cs.bright_blue },
-		{ name = "TelescopeMatching", fg = cs.bright_magenta, style = "bold" },
-		{ name = "TelescopePromptPrefix", fg = cs.bright_cyan, style = "bold" },
+		{ name = "TelescopePromptCounter", fg = cs.dimmed },
+		{ name = "TelescopeMatching", fg = cs.highlight, style = "bold" },
+		{ name = "TelescopePromptPrefix", fg = cs.dimmed, style = "bold" },
 	}
 
 	-- FZF
@@ -416,12 +406,12 @@ function M.get_theme(config)
 		{ name = "FZFForegroundPlus", fg = cs.highlight, style = "bold" }, -- fg = selected result
 		{ name = "FZFHeader", bg = cs.fg },
 		{ name = "FZFHighlight", fg = cs.highlight, bg = cs.elevation.down1 },
-		{ name = "FZFHighlightPlus", fg = cs.bright_magenta, style = "bold" }, -- fg = fuzzy match in selected result
+		{ name = "FZFHighlightPlus", fg = cs.highlight, bg = cs.elevation.down1, style = "bold" }, -- fg = fuzzy match in selected result
 		{ name = "FZFInfo", fg = cs.fg },
-		{ name = "FZFMarker", fg = cs.bright_magenta },
-		{ name = "FZFPointer", fg = cs.bright_magenta },
-		{ name = "FZFPrompt", fg = cs.bright_cyan },
-		{ name = "FZFSpinner", fg = cs.bright_green },
+		{ name = "FZFMarker", fg = cs.highlight },
+		{ name = "FZFPointer", fg = cs.highlight },
+		{ name = "FZFPrompt", fg = cs.fg },
+		{ name = "FZFSpinner", fg = cs.fg },
 	}
 
 	-- Treesitter
