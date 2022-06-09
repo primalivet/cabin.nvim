@@ -1,5 +1,45 @@
 local M = {}
 
+local newColors = {
+black = "#000000",
+white = "#FFFFFF",
+blue_medium = "#4F87E5",
+blue_light = "#00B5F4",
+blue_dark = "#375A7E",
+green_medium = "#59A83E",
+green_light = "#A8D52B",
+green_dark = "#406932",
+magenta_medium = "#C92778",
+magenta_light = "#F57796",
+magenta_dark = "#7A264E",
+cyan_medium = "#00B594",
+cyan_light = "#81DFC6",
+cyan_dark = "#077264",
+yellow_medium = "#FFC427",
+yellow_light = "#FAE050",
+yellow_dark = "#AA7A00",
+red_medium = "#EE560D",
+red_light = "#F88F24",
+red_dark = "#913408",
+shade_dark1 = "#211D18",
+shade_dark2 = "#2B2721",
+shade_dark3 = "#403B31",
+shade_dark4 = "#50493E",
+shade_dark5 = "#595446",
+shade_dark6 = "#726A5A",
+shade_dark7 = "#8E8371",
+shade_dark8 = "#9D9484",
+shade_light1 = "#EFEDE5",
+shade_light2 = "#E9E5D7",
+shade_light3 = "#D9CEB7",
+shade_light4 = "#CEC0A2",
+shade_light5 = "#C8B897",
+shade_light6 = "#C1AF89",
+shade_light7 = "#B7A785",
+shade_light8 = "#AD9F7E",
+
+}
+
 local default_config = {
 	fat_vert_split = false,
 	colored_columns = true,
@@ -69,8 +109,10 @@ function M.load()
 		end
 	end
 
-	-- Destroy global config
-	_G.cabin_cnf = nil
+  -- Destroy global config (we might not want to do this as it disables the
+  -- ability to change colorschemes with :colorscheme, we need the global
+  -- setup)
+	-- _G.cabin_cnf = nil
 end
 
 return M
