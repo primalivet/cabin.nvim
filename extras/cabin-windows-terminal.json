@@ -2,10 +2,16 @@
   "name": "cabin",
 
   "foreground": "#D4C0B0",
-  "background": "#2B2721",
+  // Fear of the dark
+  // "background": "#000000",
+  // Normal
+  // "background": "#2B2721",
   "cursorColor": "#F57796",
 
-  "black": "#2B2721",
+  // Fear of the dark
+  "black": "#000000",
+  // Normal
+  // "black": "#2B2721",
   "brightBlack":  "#403B31",
   "red": "#EE560D",
   "brightRed": "#F88F24",
