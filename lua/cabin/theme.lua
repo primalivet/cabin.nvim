@@ -70,7 +70,7 @@ function M.setup(config)
 		{ name = "NormalFloat", bg = cs.elevation.up1 },
 		{ name = "NormalNC", link = "Normal" },
 		-- Lines
-		{ name = "LineNr", fg = cs.dimmed },
+		{ name = "LineNr", fg = cs.fg },
 		{ name = "LineNrAbove", link = "LineNr" },
 		{ name = "LineNrBelow", link = "LineNr" },
 		{ name = "Folded", fg = cs.fg, bg = cs.elevation.up1 },
@@ -112,8 +112,8 @@ function M.setup(config)
 		-- { name = "WildMenu", link = "PmenuSel" },
 		{ name = "WildMenu", fg = cs.bg, bg = cs.highlight },
 		-- Statusline
-		{ name = "StatusLine", fg = cs.fg, bg = cs.elevation.up1 },
-		{ name = "StatusLineNC", bg = cs.bg },
+		{ name = "StatusLine", fg = cs.bg, bg = cs.fg },
+		{ name = "StatusLineNC", fg = cs.bg, bg = cs.elevation.up3 },
 		-- TabLine
 		-- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.bg },
@@ -123,7 +123,7 @@ function M.setup(config)
 		{ name = "TermCursor", link = "Cursor" },
 		{ name = "TermCursorNC", link = "Cursor" },
 		-- Visual
-		{ name = "Visual", bg = cs.elevation.up2 },
+		{ name = "Visual", fg = cs.bg, bg = cs.fg },
 		{ name = "VisualNOS", link = "Visual" },
 		-- Spell
 		{ name = "SpellBad", sp = cs.failure, style = "undercurl" },
