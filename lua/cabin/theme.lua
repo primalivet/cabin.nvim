@@ -113,7 +113,7 @@ function M.setup(config)
 		{ name = "WildMenu", fg = cs.bg, bg = cs.highlight },
 		-- Statusline
 		{ name = "StatusLine", fg = cs.bg, bg = cs.fg },
-		{ name = "StatusLineNC", fg = cs.bg, bg = cs.elevation.up3 },
+		{ name = "StatusLineNC", fg = cs.fg, bg = cs.elevation.up3 },
 		-- TabLine
 		-- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.bg },
