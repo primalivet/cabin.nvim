@@ -67,7 +67,7 @@ function M.setup(config)
 	theme.base = {
 		-- Normal
 		{ name = "Normal", fg = cs.fg, bg = cs.bg },
-		{ name = "NormalFloat", bg = cs.elevation.up1 },
+		{ name = "NormalFloat", bg = cs.elevation.up2 },
 		{ name = "NormalNC", link = "Normal" },
 		-- Lines
 		{ name = "LineNr", fg = cs.fg },
@@ -105,10 +105,10 @@ function M.setup(config)
 		{ name = "Search", fg = cs.bg, bg = cs.highlight },
 		{ name = "Substitute", link = "Search" },
 		-- Pmenu
-		{ name = "Pmenu", bg = cs.elevation.up1 },
+		{ name = "Pmenu", bg = cs.elevation.up3 },
 		{ name = "PmenuSbar", bg = cs.elevation.up2 },
 		{ name = "PmenuSel", fg = cs.highlight, bg = cs.elevation.up2 },
-		{ name = "PmenuThumb", bg = cs.elevation.up3 },
+		{ name = "PmenuThumb", bg = cs.elevation.up1 },
 		-- { name = "WildMenu", link = "PmenuSel" },
 		{ name = "WildMenu", fg = cs.bg, bg = cs.highlight },
 		-- Statusline
