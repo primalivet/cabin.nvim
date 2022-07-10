@@ -95,7 +95,7 @@ function M.setup(config)
 		{ name = "ErrorMsg", fg = cs.failure, style = "bold" },
 		{ name = "ModeMsg", fg = cs.fg, style = "bold" },
 		{ name = "MoreMsg", fg = cs.fg, style = "bold" },
-		{ name = "MsgArea" },
+		{ name = "MsgArea", fg = cs.highlight },
 		{ name = "MsgSeparator", link = "MoreMsg" },
 		{ name = "WarningMsg", fg = cs.warning, style = "bold" },
 		{ name = "Question", fg = cs.info },
@@ -172,7 +172,6 @@ function M.setup(config)
 		{ name = "StorageClass", link = "Type" },
 		{ name = "Structure", link = "Type" },
 		{ name = "Typedef", link = "Type" },
-
 		{ name = "Special", fg = cs.fg },
 		{ name = "SpecialChar", link = "Character" },
 		{ name = "Tag", fg = cs.fg, style = "bold" },
