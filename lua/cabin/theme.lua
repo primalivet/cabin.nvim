@@ -87,10 +87,10 @@ function M.setup(config)
 		{ name = "CursorLineNr" },
 		{ name = "lCursor", link = "Cursor" },
 		-- Diffs
-		{ name = "DiffAdd", fg = cs.success, bg = cs.none },
-		{ name = "DiffChange", fg = cs.warning, bg = cs.none },
-		{ name = "DiffDelete", fg = cs.failure, bg = cs.none },
-		{ name = "DiffText", style = "underline" },
+		{ name = "DiffAdd", bg = cs.success, fg = cs.bg },
+		{ name = "DiffChange", bg = cs.warning, fg = cs.bg },
+		{ name = "DiffDelete", bg = cs.failure, fg = cs.bg },
+		{ name = "DiffText", bg = cs.warning, fg = cs.bg, style = "underline" },
 		-- Messages
 		{ name = "ErrorMsg", fg = cs.failure, style = "bold" },
 		{ name = "ModeMsg", fg = cs.fg, style = "bold" },
