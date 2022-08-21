@@ -425,7 +425,7 @@ function M.setup(config)
 		{ name = "FZFHeader", bg = cs.fg },
 		{ name = "FZFHighlight", fg = cs.highlight, bg = cs.bg },
 		{ name = "FZFHighlightPlus", fg = cs.highlight, bg = cs.bg, style = "bold" }, -- fg = fuzzy match in selected result
-		{ name = "FZFInfo", fg = cs.fg },
+		{ name = "FZFInfo", fg = cs.success },
 		{ name = "FZFMarker", fg = cs.highlight },
 		{ name = "FZFPointer", fg = cs.highlight },
 		{ name = "FZFPrompt", fg = cs.fg },
