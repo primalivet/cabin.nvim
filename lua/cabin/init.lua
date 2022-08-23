@@ -55,6 +55,26 @@ function M.setup(user_settings)
 	_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, overrides)
 end
 
+local function set_config_bg()
+	-- TODO: there should be another more direct way to reach the background variable
+	if vim.opt.background._value == "light" then
+		_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, { light = true })
+  else
+		_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, { light = false })
+  end
+end
+
+
+local function apply_theme()
+	local sections = require("cabin.theme").setup(_G.cabin_cnf)
+	for _, section in pairs(sections) do
+		for _, group in ipairs(section) do
+			local highlight_command = require("cabin.utils").stringify_group(group)
+			vim.cmd(highlight_command)
+		end
+	end
+end
+
 function M.load()
 	-- clear if not colorscheme default
 	if vim.g.colors_name then
@@ -73,23 +93,18 @@ function M.load()
 
 	vim.g.colors_name = "cabin"
 
-	-- TODO: there should be another more direct way to reach the background variable
-	if vim.opt.background._value == "light" then
-		_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, { light = true })
-	end
+  set_config_bg()
+  apply_theme()
 
-	local sections = require("cabin.theme").setup(_G.cabin_cnf)
-	for _, section in pairs(sections) do
-		for _, group in ipairs(section) do
-			local highlight_command = require("cabin.utils").stringify_group(group)
-			vim.cmd(highlight_command)
-		end
-	end
-
-	-- Destroy global config (we might not want to do this as it disables the
-	-- ability to change colorschemes with :colorscheme, we need the global
-	-- setup)
-	-- _G.cabin_cnf = nil
+	local group = vim.api.nvim_create_augroup("CABIN", {})
+	vim.api.nvim_create_autocmd({ "OptionSet" }, {
+		group = group,
+		pattern = "background",
+		callback = function()
+      set_config_bg()
+      apply_theme()
+		end,
+	})
 end
 
 return M
