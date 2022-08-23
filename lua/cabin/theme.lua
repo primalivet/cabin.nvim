@@ -16,7 +16,7 @@ function M.setup(config)
 
 	if light then
 		cs.fg = palette.shade_dark3
-		cs.bg = config.fear_of_the_dark and palette.shade_light4 or palette.shade_light2
+		cs.bg = palette.shade_light4
 
 		cs.highlight = palette.blue_dark -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_dark
@@ -34,13 +34,13 @@ function M.setup(config)
 		cs.syntax_constant = palette.magenta_dark -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
 		cs.elevation = {
-			up1 = config.fear_of_the_dark and palette.shade_light5 or palette.shade_light3,
-			up2 = config.fear_of_the_dark and palette.shade_light6 or palette.shade_light4,
-			up3 = config.fear_of_the_dark and palette.shade_light7 or palette.shade_light5,
+			up1 = palette.shade_light5,
+			up2 = palette.shade_light6,
+			up3 = palette.shade_light7,
 		}
 	else
 		cs.fg = palette.shade_light3
-		cs.bg = config.fear_of_the_dark and palette.black or palette.shade_dark2
+		cs.bg = palette.black
 
 		cs.highlight = palette.yellow_medium -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_medium
@@ -58,9 +58,9 @@ function M.setup(config)
 		cs.syntax_constant = palette.magenta_medium -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
 		cs.elevation = {
-			up1 = config.fear_of_the_dark and palette.shade_dark1 or palette.shade_dark3,
-			up2 = config.fear_of_the_dark and palette.shade_dark2 or palette.shade_dark4,
-			up3 = config.fear_of_the_dark and palette.shade_dark3 or palette.shade_dark5,
+			up1 = palette.shade_dark1,
+			up2 = palette.shade_dark2,
+			up3 = palette.shade_dark3,
 		}
 	end
 
@@ -147,11 +147,11 @@ function M.setup(config)
 		{ name = "Constant", fg = cs.fg },
 		{ name = "String", fg = cs.syntax_string },
 		{ name = "Character", fg = cs.syntax_string, style = "italic" },
-		{ name = "Number",  fg = cs.syntax_constant },
+		{ name = "Number", fg = cs.syntax_constant },
 		{ name = "Boolean", fg = cs.syntax_constant },
-		{ name = "Float",   fg = cs.syntax_constant },
+		{ name = "Float", fg = cs.syntax_constant },
 
-		{ name = "Identifier", fg = cs.fg},
+		{ name = "Identifier", fg = cs.fg },
 		{ name = "Function", fg = cs.syntax_func, style = "bold" },
 
 		{ name = "Statement", fg = cs.syntax_control, style = "bold" },

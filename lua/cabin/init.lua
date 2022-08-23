@@ -1,9 +1,8 @@
 local M = {}
 
 local default_config = {
-	fat_vert_split = true,
-	colored_columns = true,
-	fear_of_the_dark = true,
+	fat_vert_split = false,
+	colored_columns = false,
 	light = false,
 	colors = {
 		none = "NONE",
