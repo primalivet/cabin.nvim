@@ -16,14 +16,14 @@ function M.setup(config)
 
 	if light then
 		cs.fg = palette.shade_dark3
-		cs.bg = palette.shade_light4
+		cs.bg = palette.white
 
 		cs.highlight = palette.blue_dark -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_dark
 		cs.warning = palette.yellow_dark
 		cs.failure = palette.red_dark
 		cs.info = palette.fg
-		cs.dimmed = palette.shade_light8
+		cs.dimmed = palette.shade_light2
 
 		cs.syntax_control = palette.green_dark -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
 		cs.syntax_symbols = palette.green_dark -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
@@ -34,9 +34,9 @@ function M.setup(config)
 		cs.syntax_constant = palette.magenta_dark -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
 		cs.elevation = {
-			up1 = palette.shade_light5,
-			up2 = palette.shade_light6,
-			up3 = palette.shade_light7,
+			up1 = palette.shade_light2,
+			up2 = palette.shade_light3,
+			up3 = palette.shade_light4,
 		}
 	else
 		cs.fg = palette.shade_light3
