@@ -16,21 +16,21 @@ function M.setup(config)
 
 	if light then
 		cs.fg = palette.shade_dark3
-		cs.bg = palette.white
+		cs.bg = palette.shade_light1
 
 		cs.highlight = palette.blue_dark -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_dark
 		cs.warning = palette.yellow_dark
 		cs.failure = palette.red_dark
 		cs.info = palette.fg
-		cs.dimmed = palette.shade_light2
+		cs.dimmed = palette.shade_light8
 
-		cs.syntax_control = palette.green_dark -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
-		cs.syntax_symbols = palette.green_dark -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
+		cs.syntax_control = palette.blue_dark -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
+		cs.syntax_symbols = palette.blue_dark -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
 		cs.syntax_dimmed = palette.cyan_dark -- Dimmed: Comments, LSP normal text, etc.
-		cs.syntax_types = palette.blue_medium -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
-		cs.syntax_func = palette.blue_dark -- Func: Functions and method calls
-		cs.syntax_string = palette.red_dark -- Strings: Strings and string like, e.g. regex and object keys
+		cs.syntax_types = palette.cyan_medium -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
+		cs.syntax_func = palette.blue_medium -- Func: Functions and method calls
+		cs.syntax_string = palette.green_dark -- Strings: Strings and string like, e.g. regex and object keys
 		cs.syntax_constant = palette.magenta_dark -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
 		cs.elevation = {
@@ -40,7 +40,7 @@ function M.setup(config)
 		}
 	else
 		cs.fg = palette.shade_light3
-		cs.bg = palette.black
+		cs.bg = palette.shade_dark1
 
 		cs.highlight = palette.yellow_medium -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_medium
@@ -49,18 +49,18 @@ function M.setup(config)
 		cs.info = palette.fg
 		cs.dimmed = palette.shade_dark8
 
-		cs.syntax_control = palette.red_light -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
-		cs.syntax_symbols = palette.red_light -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
-		cs.syntax_dimmed = palette.cyan_dark -- Dimmed: Comments, LSP normal text, etc.
-		cs.syntax_types = palette.cyan_medium -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
-		cs.syntax_func = palette.yellow_medium -- Func: Functions and method calls
+		cs.syntax_control = palette.yellow_medium -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
+		cs.syntax_symbols = palette.yellow_medium -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
+		cs.syntax_dimmed = palette.cyan_medium -- Dimmed: Comments, LSP normal text, etc.
+		cs.syntax_types = palette.cyan_light -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
+		cs.syntax_func = palette.yellow_light -- Func: Functions and method calls
 		cs.syntax_string = palette.green_medium -- Strings: Strings and string like, e.g. regex and object keys
 		cs.syntax_constant = palette.magenta_medium -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
 		cs.elevation = {
-			up1 = palette.shade_dark1,
-			up2 = palette.shade_dark2,
-			up3 = palette.shade_dark3,
+			up1 = palette.shade_dark2,
+			up2 = palette.shade_dark3,
+			up3 = palette.shade_dark4,
 		}
 	end
 
