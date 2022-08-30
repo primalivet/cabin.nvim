@@ -29,7 +29,6 @@ function M.setup(config)
 		cs.syntax_symbols = palette.blue_dark -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
 		cs.syntax_dimmed = palette.cyan_dark -- Dimmed: Comments, LSP normal text, etc.
 		cs.syntax_types = palette.cyan_medium -- Types: Types such as "int", "float", "char", "bool" and "builtin types like" like Array, String etc.
-		cs.syntax_func = palette.blue_medium -- Func: Functions and method calls
 		cs.syntax_string = palette.green_dark -- Strings: Strings and string like, e.g. regex and object keys
 		cs.syntax_constant = palette.magenta_dark -- Constants: Constants like "PI", "e", "true", "false" and numbers
 
