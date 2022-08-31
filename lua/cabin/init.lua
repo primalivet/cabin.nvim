@@ -4,6 +4,7 @@ local default_config = {
 	fat_vert_split = false,
 	colored_columns = false,
   dimmed_statusline = true,
+  dimmed_linenr = true,
 	light = false,
 	colors = {
 		none = "NONE",

@@ -46,7 +46,7 @@ function M.setup(config)
 		cs.warning = palette.yellow_medium
 		cs.failure = palette.red_medium
 		cs.info = palette.fg
-		cs.dimmed = palette.shade_dark8
+		cs.dimmed = palette.shade_dark7
 
 		cs.syntax_control = palette.yellow_medium -- Control: Control flow and operator "words" such as "if", "else", "for", "while", "return" etc.
 		cs.syntax_symbols = palette.yellow_medium -- Symbols: Non word operators such as "=", "+", "-", "*", "/", "==", "!=", ">", ">=", "<", "<=" etc.
@@ -69,7 +69,7 @@ function M.setup(config)
 		{ name = "NormalFloat", bg = cs.elevation.up2 },
 		{ name = "NormalNC", link = "Normal" },
 		-- Lines
-		{ name = "LineNr", fg = cs.fg },
+		{ name = "LineNr", fg = config.dimmed_linenr and cs.dimmed or cs.fg },
 		{ name = "LineNrAbove", link = "LineNr" },
 		{ name = "LineNrBelow", link = "LineNr" },
 		{ name = "Folded", fg = cs.fg, bg = cs.elevation.up1 },
