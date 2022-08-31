@@ -2,29 +2,23 @@
   "name": "cabin",
 
   "foreground": "#D4C0B0",
-  // Fear of the dark
-  // "background": "#000000",
-  // Normal
-  // "background": "#2B2721",
+  "background": "#211D18",
   "cursorColor": "#F57796",
 
-  // Fear of the dark
-  "black": "#000000",
-  // Normal
-  // "black": "#2B2721",
+  "black": "#211D18",
   "brightBlack":  "#403B31",
-  "red": "#EE560D",
-  "brightRed": "#F88F24",
+  "red": "#B93B00",
+  "brightRed": "#EE560D",
   "green": "#59A83E",
-  "brightGreen": "#A8C948",
-  "yellow": "#FFC427",
-  "brightYellow": "#FAE050",
+  "brightGreen": "#A8D52B",
+  "yellow": "#F88F24",
+  "brightYellow": "#FFC427",
   "blue": "#0000FF",
   "brightBlue": "#69B3DD",
-  "cyan": "#00B5AC",
-  "brightCyan": "#81DFC6",
   "purple": "#C92778",
   "brightPurple": "#F57796",
+  "cyan": "#077264",
+  "bright": "#00B594",
   "white": "#C5B697",
   "brightWhite": "#D4C0B0"
 }

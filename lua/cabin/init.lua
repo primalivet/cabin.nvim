@@ -9,24 +9,29 @@ local default_config = {
 		black = "#000000",
 		white = "#FFFFFF",
 
-    blue_medium = "#0000FF",
     blue_light = "#69B3DD",
+    blue_medium = "#0000FF",
     blue_dark = "#033A6D",
-    green_medium = "#59A83E",
+
     green_light = "#A8D52B",
+    green_medium = "#59A83E",
     green_dark = "#406932",
-    magenta_medium = "#C92778",
+
     magenta_light = "#F57796",
+    magenta_medium = "#C92778",
     magenta_dark = "#7A264E",
-    cyan_medium = "#077264",
+
     cyan_light = "#00B594",
+    cyan_medium = "#077264",
     cyan_dark = "#045348",
-    yellow_dark = "#D76C00",
+
     yellow_medium = "#F88F24",
+    yellow_dark = "#D76C00",
     yellow_light = "#FFC427",
+
     red_light = "#EE560D",
-    red_dark = "#913408",
     red_medium = "#B93B00",
+    red_dark = "#913408",
 
 		shade_dark1 = "#211D18",
 		shade_dark2 = "#2B2721",
