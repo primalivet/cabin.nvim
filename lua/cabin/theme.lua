@@ -41,7 +41,7 @@ function M.setup(config)
 		cs.fg = palette.shade_light3
 		cs.bg = palette.shade_dark1
 
-		cs.highlight = palette.yellow_medium -- Highlight: Interaction and selection in the UI
+		cs.highlight = palette.yellow_light -- Highlight: Interaction and selection in the UI
 		cs.success = palette.green_medium
 		cs.warning = palette.yellow_medium
 		cs.failure = palette.red_medium
@@ -111,8 +111,8 @@ function M.setup(config)
 		-- { name = "WildMenu", link = "PmenuSel" },
 		{ name = "WildMenu", fg = cs.bg, bg = cs.highlight },
 		-- Statusline
-		{ name = "StatusLine", fg = cs.bg, bg = cs.fg },
-		{ name = "StatusLineNC", fg = cs.fg, bg = cs.elevation.up3 },
+		{ name = "StatusLine", fg = config.dimmed_statusline and cs.fg or cs.bg, bg = config.dimmed_statusline and cs.elevation.up1 or cs.fg },
+		{ name = "StatusLineNC", fg = config.dimmed_statusline and cs.elevation.up3 or cs.fg, bg = cs.elevation.up1 },
 		-- TabLine
 		-- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.bg },
