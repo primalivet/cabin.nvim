@@ -136,7 +136,7 @@ function M.setup(config)
 		{ name = "EndOfBuffer", link = "NonText" },
 		{ name = "SpecialKey" },
 		{ name = "Title" },
-		{ name = "VertSplit", fg = cs.elevation.up1, bg = config.fat_vert_split and cs.elevation.up1 or cs.none },
+		{ name = "VertSplit", fg = config.fat_vert_split and cs.fg or cs.elevation.up1, bg = config.fat_vert_split and cs.elevation.up1 or cs.none },
 		{ name = "Whitespace", link = "NonText" },
 	}
 
