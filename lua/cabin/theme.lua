@@ -100,7 +100,7 @@ function M.setup(config)
 		{ name = "Question", fg = cs.info },
 		-- Search and highlight
 		{ name = "IncSearch", fg = cs.bg, bg = cs.highlight },
-		{ name = "MatchParen", fg = cs.highlight, style = "bold" },
+		{ name = "MatchParen", fg = cs.highlight, style = "bold,inverse" },
 		{ name = "Search", fg = cs.bg, bg = cs.highlight },
 		{ name = "Substitute", link = "Search" },
 		-- Pmenu
