@@ -1,10 +1,10 @@
 local M = {}
 
 local default_config = {
-	fat_vert_split = true,
-	colored_columns = true,
-  dimmed_statusline = false,
-  dimmed_linenr = false,
+	fat_vert_split = false,
+	colored_columns = false,
+  dimmed_statusline = true,
+  dimmed_linenr = true,
 	light = false,
 	colors = {
 		none = "NONE",
