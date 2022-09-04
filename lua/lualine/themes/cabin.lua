@@ -1,5 +1,4 @@
 local cs = require("cabin.colors")
-local config = _G.cabin_cnf
 local cabin = {}
 
 cabin.normal = {
@@ -21,7 +20,7 @@ cabin.insert = {
 }
 
 cabin.command = {
-	a = { bg = cs.yellow_light, fg = cs.shade_dark1, gui = "bold,italic" },
+	a = { bg = cs.shade_dark1, fg = cs.yellow_light, gui = "bold,italic" },
 	b = { bg = cs.shade_dark3, fg = cs.shade_light3 },
 	c = { bg = cs.shade_dark2, fg = cs.shade_light8 },
 	x = { bg = cs.shade_dark2, fg = cs.shade_light8 },
