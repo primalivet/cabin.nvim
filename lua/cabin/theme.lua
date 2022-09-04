@@ -122,7 +122,7 @@ function M.setup(config)
 		{ name = "TermCursor", link = "Cursor" },
 		{ name = "TermCursorNC", link = "Cursor" },
 		-- Visual
-		{ name = "Visual", fg = cs.bg, bg = cs.fg },
+		{ name = "Visual", fg = cs.bg, bg = cs.highlight },
 		{ name = "VisualNOS", link = "Visual" },
 		-- Spell
 		{ name = "SpellBad", sp = cs.failure, style = "undercurl" },
