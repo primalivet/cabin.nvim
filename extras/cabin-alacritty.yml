@@ -1,0 +1,26 @@
+# Cabin theme
+colors:
+  primary:
+    background:    '#211D18'
+    foreground:    '#D4C0B0'
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  normal:
+    black:         '#211D18'
+    blue:          '#0000FF'
+    cyan:          '#077264'
+    green:         '#59A83E'
+    purple:        '#C92778'
+    red:           '#B93B00'
+    white:         '#C5B697'
+    yellow:        '#F88F24'
+  bright:
+    black:   '#403B31'
+    blue:    '#69B3DD'
+    cyan:    '#00B594'
+    green:   '#A8D52B'
+    purple:  '#F57796'
+    red:     '#EE560D'
+    white:   '#D4C0B0'
+    yellow:  '#FFC427'
