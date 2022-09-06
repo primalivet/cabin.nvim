@@ -2,10 +2,7 @@ local M = {}
 
 local colors = require('cabin.colors')
 local default_config = {
-	fat_vert_split = false,
-	colored_columns = false,
-  dimmed_statusline = true,
-  dimmed_linenr = true,
+  fancy_pants = false,
 	light = false,
 	colors = colors,
 }

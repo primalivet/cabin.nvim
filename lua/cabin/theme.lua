@@ -69,15 +69,15 @@ function M.setup(config)
 		{ name = "NormalFloat", bg = cs.elevation.up2 },
 		{ name = "NormalNC", link = "Normal" },
 		-- Lines
-		{ name = "LineNr", fg = config.dimmed_linenr and cs.dimmed or cs.fg },
+		{ name = "LineNr", fg = config.fancy_pants and cs.dimmed or cs.highlight },
 		{ name = "LineNrAbove", link = "LineNr" },
 		{ name = "LineNrBelow", link = "LineNr" },
 		{ name = "Folded", fg = cs.fg, bg = cs.elevation.up1 },
 		{ name = "QuickFixLine", fg = cs.bg, bg = cs.highlight },
 		-- Columns
 		{ name = "ColorColumn", bg = cs.failure },
-		{ name = "FoldColumn", fg = cs.dimmed, bg = config.colored_columns and cs.elevation.up2 or cs.none },
-		{ name = "SignColumn", bg = config.colored_columns and cs.elevation.up1 or cs.none },
+		{ name = "FoldColumn", fg = cs.dimmed, bg = config.fancy_pants and cs.none or cs.elevation.up2 },
+		{ name = "SignColumn", bg = config.fancy_pants and cs.none or cs.elevation.up1 },
 		-- Cursor
 		{ name = "Cursor", fg = cs.bg, bg = cs.fg },
 		{ name = "CursorColumn", bg = cs.elevation.up1 },
@@ -91,12 +91,12 @@ function M.setup(config)
 		{ name = "DiffDelete", bg = cs.failure, fg = cs.bg },
 		{ name = "DiffText", bg = cs.warning, fg = cs.bg, style = "underline" },
 		-- Messages
-		{ name = "ErrorMsg", fg = cs.failure, style = "bold" },
+		{ name = "ErrorMsg", fg = cs.fancy_pants and cs.failure or cs.fg, bg = cs.fancy_pants and cs.none or cs.failure, style = "bold" },
 		{ name = "ModeMsg", fg = cs.fg, style = "bold" },
 		{ name = "MoreMsg", fg = cs.fg, style = "bold" },
 		{ name = "MsgArea", fg = cs.highlight },
 		{ name = "MsgSeparator", link = "MoreMsg" },
-		{ name = "WarningMsg", fg = cs.warning, style = "bold" },
+		{ name = "WarningMsg", fg = cs.fancy_pants and cs.warning or cs.bg, bg = cs.fancy_pants and cs.none or cs.warning, style = "bold" },
 		{ name = "Question", fg = cs.info },
 		-- Search and highlight
 		{ name = "IncSearch", fg = cs.bg, bg = cs.highlight },
@@ -111,8 +111,12 @@ function M.setup(config)
 		-- { name = "WildMenu", link = "PmenuSel" },
 		{ name = "WildMenu", fg = cs.bg, bg = cs.highlight },
 		-- Statusline
-		{ name = "StatusLine", fg = config.dimmed_statusline and cs.fg or cs.bg, bg = config.dimmed_statusline and cs.elevation.up1 or cs.fg },
-		{ name = "StatusLineNC", fg = config.dimmed_statusline and cs.elevation.up3 or cs.fg, bg = cs.elevation.up1 },
+		{
+			name = "StatusLine",
+			fg = config.fancy_pants and cs.fg or cs.bg,
+			bg = config.fancy_pants and cs.elevation.up1 or cs.fg,
+		},
+		{ name = "StatusLineNC", fg = config.fancy_pants and cs.elevation.up3 or cs.fg, bg = cs.elevation.up1 },
 		-- TabLine
 		-- TODO: problem when options pitch_black
 		{ name = "TabLine", bg = cs.bg },
@@ -136,7 +140,11 @@ function M.setup(config)
 		{ name = "EndOfBuffer", link = "NonText" },
 		{ name = "SpecialKey" },
 		{ name = "Title" },
-		{ name = "VertSplit", fg = config.fat_vert_split and cs.fg or cs.elevation.up1, bg = config.fat_vert_split and cs.elevation.up1 or cs.none },
+		{
+			name = "VertSplit",
+			fg = config.fancy_pants and cs.fg or cs.elevation.up1,
+			bg = config.fancy_pants and cs.elevation.up1 or cs.none,
+		},
 		{ name = "Whitespace", link = "NonText" },
 	}
 
