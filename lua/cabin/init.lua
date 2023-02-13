@@ -1,38 +1,31 @@
 local M = {}
 
-local colors = require('cabin.colors')
-local default_config = {
-  fancy_pants = false,
+local colors = require("cabin.colors")
+
+M.options = {
+	fancy_pants = false,
 	light = false,
 	colors = colors,
 }
 
-function M.setup(user_settings)
-	local overrides = user_settings or {}
-	-- Load global config
-	_G.cabin_cnf = vim.deepcopy(default_config)
-
-	-- Modify global config
-	_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, overrides)
+function M.setup(options)
+	M.options = vim.tbl_deep_extend("force", M.options, options or {})
 end
 
 local function set_config_bg()
 	-- TODO: there should be another more direct way to reach the background variable
 	if vim.opt.background._value == "light" then
-		_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, { light = true })
-  else
-		_G.cabin_cnf = vim.tbl_deep_extend("force", _G.cabin_cnf, { light = false })
-  end
+		M.options = vim.tbl_deep_extend("force", M.options, { light = true })
+	else
+		M.options = vim.tbl_deep_extend("force", M.options, { light = false })
+	end
 end
 
-
 local function apply_theme()
-  local sections = require("cabin.theme").setup(_G.cabin_cnf)
-	for _, section in pairs(sections) do
-		for _, group in ipairs(section) do
-			local highlight_command = require("cabin.utils").stringify_group(group)
-			vim.cmd(highlight_command)
-		end
+	local sections = require("cabin.theme").setup(M.options)
+	for name, group in pairs(sections) do
+		local highlight_command = require("cabin.utils").stringify_group(name, group)
+		vim.cmd(highlight_command)
 	end
 end
 
@@ -54,16 +47,16 @@ function M.load()
 
 	vim.g.colors_name = "cabin"
 
-  set_config_bg()
-  apply_theme()
+	set_config_bg()
+	apply_theme()
 
 	local group = vim.api.nvim_create_augroup("CABIN", {})
 	vim.api.nvim_create_autocmd({ "OptionSet" }, {
 		group = group,
 		pattern = "background",
 		callback = function()
-      set_config_bg()
-      apply_theme()
+			set_config_bg()
+			apply_theme()
 		end,
 	})
 end
