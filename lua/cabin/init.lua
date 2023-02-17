@@ -3,8 +3,6 @@ local M = {}
 local colors = require("cabin.colors")
 
 M.options = {
-	fancy_pants = false,
-	light = false,
 	colors = colors,
 }
 
@@ -24,8 +22,9 @@ end
 local function apply_theme()
 	local sections = require("cabin.theme").setup(M.options)
 	for name, group in pairs(sections) do
-		local highlight_command = require("cabin.utils").stringify_group(name, group)
-		vim.cmd(highlight_command)
+		vim.api.nvim_set_hl(0, name, group)
+		-- local highlight_command = require("cabin.utils").stringify_group(name, group)
+		-- vim.cmd(highlight_command)
 	end
 end
 
