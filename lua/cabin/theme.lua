@@ -1,5 +1,4 @@
 local M = {}
-
 -- HiGroup {
 --   name: String,
 --   link?: String (GroupName)
@@ -27,7 +26,7 @@ function M.setup(config)
 		DiffText = { bg = cs.blue_darker },
 		Directory = { bold = true },
 		EndOfBuffer = { link = "NonText" },
-		ErrorMsg = { bg = cs.red_medium, bold = true },
+		ErrorMsg = { fg = cs.shade_light3, bg = cs.red_medium, bold = true },
 		FoldColumn = { link = "Folded" },
 		Folded = { fg = cs.shade_light5, bg = cs.shade_dark2 },
 		IncSearch = { fg = cs.shade_dark1, bg = cs.yellow_light },
@@ -145,53 +144,10 @@ function M.setup(config)
 		-- Quickfix list
 		-- qfFileName = {},
 
-		-- Netrw
-		-- netrwDir = { link = "Directory" },
-		-- netrwPlain = { fg = cs.fg },
-		-- netrwHdr = { link = "netrwPlain" },
-		-- netrwLex = { link = "netrwPlain" },
-		-- netrwYacc = { link = "netrwPlain" },
-		-- netrwComment = { link = "Comment" },
-		-- netrwHide = { link = "netrwComment" },
-		-- netrwHideSep = { link = "netrwComment" },
-		-- netrwComma = { link = "netrwComment" },
-		-- netrwHelpCmd = { fg = cs.highlight, bold = true },
-		-- netrwCmdNote = { fg = cs.highlight },
-		-- netrwClassify = { link = "Function" }, -- Directory trailing slash
-		-- netrwLink = { link = "netrwClassify" },
-		-- netrwSymLink = { link = "netrwClassify" },
-		-- netrwVersion = { link = "Identifier" },
-		-- netrwExe = { link = "PreProc" },
-		-- netrwDateSep = { link = "Delimiter" },
-		-- netrwTreeBar = { link = "Special" },
-		-- netrwHidePat = { link = "Statement" },
-		-- netrwList = { link = "Statement" },
-		-- netrwQHTopic = { link = "Number" },
-		-- netrwCmdSep = { link = "Delimiter" },
-		-- netrwMarkFile = { link = "TabLineSel" },
-		-- netrwCoreDump = { link = "WarningMsg" },
-		-- netrwData = { link = "Folded" },
-		-- netrwLib = { link = "DiffChange" },
-		-- netrwMakefile = { link = "DiffChange" },
-		-- netrwPix = { link = "Special" },
-		-- netrwTimeSep = { link = "netrwDateSep" },
-		-- netrwGray = { link = "Folded" },
-		-- netrwBak = { link = "netrwGray" },
-		-- netrwCompress = { link = "netrwGray" },
-		-- netrwSpecFile = { link = "netrwGray" },
-		-- netrwObj = { link = "netrwGray" },
-		-- netrwTags = { link = "netrwGray" },
-		-- netrwTilde = { link = "netrwGray" },
-		-- netrwTmp = { link = "netrwGray" },
-
 		-- LSP References
 		-- LspReferenceText = { bg = cs.elevation.up2 },
 		-- LspReferenceRead = { bg = cs.elevation.up2 },
 		-- LspReferenceWrite = { bg = cs.elevation.up2 },
-
-
-		-- Copilot Suggestion
-		-- CopilotSuggestion = { link = "Comment" },
 
 		-- CMP Completion engine
 		-- CmpItemAbbr = { fg = cs.fg },
@@ -230,15 +186,6 @@ function M.setup(config)
 		--   The kind field's highlight group for specific `lsp.CompletionItemKind`.
 		--   If you want to overwrite only the method kind's highlight group, you can do this.
 		--      Example: highlight CmpItemKindMethod guibg=NONE guifg=Orange
-
-		-- TODO: LSP Saga
-		-- theme.lspsaga = {}
-
-		-- TODO: GitGutter
-		-- theme.gitgutter = {}
-
-		-- TODO: Neogit
-		-- theme.neogit = {}
 
 		-- Trouble
 		-- TroubleNormal = { link = "Normal" },
