@@ -12,7 +12,6 @@ function M.setup(config)
 	local cs = config.colors
 
 	theme = {
-
 		ColorColumn = { bg = cs.red_darker },
 		Conceal = {},
 		Cursor = {},
@@ -34,9 +33,9 @@ function M.setup(config)
 		LineNrAbove = { link = "LineNr" },
 		LineNrBelow = { link = "LineNr" },
 		MatchParen = { underline = true },
-		ModeMsg = { bold = true },
-		MoreMsg = { bold = true },
-		MsgArea = { fg = cs.yellow_light },
+		ModeMsg = { fg = cs.yellow_light, bold = true },
+		MoreMsg = { fg = cs.green_medium, bold = true },
+		MsgArea = { link = "Normal" },
 		MsgSeparator = { link = "MoreMsg" },
 		NonText = { link = "Normal" },
 		Normal = { fg = cs.shade_light3, bg = cs.shade_dark1 },
@@ -55,7 +54,7 @@ function M.setup(config)
 		SpellCap = { undercurl = true },
 		SpellLocal = { undercurl = true },
 		SpellRare = { undercurl = true },
-		StatusLine = { link = "NormalFloat" },
+		StatusLine = { fg = cs.shade_dark1, bg = cs.shade_light3 },
 		StatusLineNC = { link = "NormalFloat" },
 		Substitute = { link = "Search" },
 		TabLine = {},
