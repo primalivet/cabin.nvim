@@ -65,7 +65,7 @@ function M.setup(config)
 		TermCursorNC = { link = "Cursor" },
 		Title = {},
 		VertSplit = { link = "Normal" },
-		Visual = { bg = cs.blue_darker },
+		Visual = { bg = cs.shade_dark4 },
 		VisualNOS = { link = "Visual" },
 		WarningMsg = { fg = cs.shade_dark1, bg = cs.yellow_light },
 		Whitespace = { link = "NonText" },
