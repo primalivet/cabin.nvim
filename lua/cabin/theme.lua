@@ -71,6 +71,8 @@ function M.setup(config)
 		WildMenu = { fg = cs.shade_dark1, bg = cs.yellow_light },
 		lCursor = { link = "Cursor" },
 
+    -- Builtin highlight groups
+
 		Comment = { fg = cs.cyan_medium, italic = true }, -- any comment (perfered group)
 
 		Constant = {}, -- any constant (perferred group)
@@ -91,7 +93,7 @@ function M.setup(config)
 		Keyword = { link = "Statement" }, -- any other keyword
 		Exception = { link = "Statement" }, -- try, catch, throw
 
-		PreProc = { fg = cs.magenta_dark }, -- generic Preprocessor (perferred group)
+		PreProc = { fg = cs.magenta_light }, -- generic Preprocessor (perferred group)
 		Include = { link = "PreProc" }, --  preprocessor #include
 		Define = { link = "PreProc" }, --  preprocessor #define
 		Macro = { link = "PreProc" }, --  same as Define
@@ -117,7 +119,10 @@ function M.setup(config)
 
 		Todo = { fg = cs.shade_dark3, bg = cs.yellow_light }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
+    -- Treesitter
+
 		-- Diagnostics
+
 		DiagnosticError = { fg = cs.red_light, bg = cs.red_darker },
 		DiagnosticWarn = { fg = cs.yellow_light, bg = cs.yellow_darker },
 		DiagnosticInfo = { fg = cs.blue_light, bg = cs.blue_darker },
@@ -257,68 +262,6 @@ function M.setup(config)
 		-- FZFPointer = { fg = cs.highlight },
 		-- FZFPrompt = { fg = cs.fg },
 		-- FZFSpinner = { fg = cs.fg },
-
-		-- Treesitter
-		-- TSAttribute = { link = "None" },
-		-- TSBoolean = { link = "Boolean" },
-		-- TSCharacter = { link = "Character" },
-		-- TSComment = { link = "Comment" },
-		-- TSConditional = { link = "Conditional" },
-		-- TSConstant = { link = "Constant" },
-		-- TSConstBuiltin = { link = "Constant" },
-		-- TSConstMacro = { link = "Constant" },
-		-- TSConstructor = { link = "None" },
-		-- TSError = { link = "Error" },
-		-- TSException = { link = "Exception" },
-		-- TSField = { link = "Label" },
-		-- TSFloat = { link = "Float" },
-		-- TSFunction = { link = "Function" },
-		-- TSFuncBuiltin = { link = "Function" },
-		-- TSFuncMacro = { link = "Function" },
-		-- TSInclude = { link = "Include" },
-		-- TSKeyword = { link = "Keyword" },
-		-- TSKeywordFunction = { link = "Function" },
-		-- TSKeywordOperator = { link = "Operator" },
-		-- TSKeywordReturn = { link = "Keyword" },
-		-- TSLabel = { link = "Label" },
-		-- TSMethod = { link = "Function" },
-		-- TSNamespace = { link = "Identifier" },
-		-- TSNone = { link = "None" },
-		-- TSNumber = { link = "Number" },
-		-- TSOperator = { link = "Operator" },
-		-- TSParameter = { link = "Identifier" },
-		-- TSParameterReference = { link = "Identifier" },
-		-- TSProperty = { link = "Label" },
-		-- TSPunctDelimiter = { link = "Delimiter" },
-		-- TSPunctBracket = { link = "Delimiter" },
-		-- TSPunctSpecial = { link = "Delimiter" },
-		-- TSRepeat = { link = "Repeat" },
-		-- TSString = { link = "String" },
-		-- TSStringRegex = { link = "Character" },
-		-- TSStringEscape = { link = "Charater" },
-		-- TSSymbol = { link = "Identifier" },
-		-- TSTag = { link = "Tag" },
-		-- TSTagAttribute = { link = "Identifier" },
-		-- TSTagDelimiter = { link = "Delimiter" },
-		-- TSText = { link = "None" },
-		-- TSStrong = { link = "Strong" },
-		-- TSEmphasis = { link = "Emphasis" },
-		-- TSUnderline = { link = "Underline" },
-		-- TSStrike = { link = "None" },
-		-- TSTitle = { link = "Title" },
-		-- TSLiteral = { link = "None" },
-		-- TSURI = { link = "None" },
-		-- TSMath = { link = "None" },
-		-- TSTextReference = { link = "None" },
-		-- TSEnviroment = { link = "None" },
-		-- TSEnviromentName = { link = "None" },
-		-- TSNote = { link = "Todo" },
-		-- TSWarning = { link = "WarningMsg" },
-		-- TSDanger = { link = "ErrorMsg" },
-		-- TSType = { link = "Type" },
-		-- TSTypeBuiltin = { link = "Type" },
-		-- TSVariable = { link = "Identifier" },
-		-- TSVariableBuiltin = { link = "Keyword" },
 	}
 
 	-- Fzf
