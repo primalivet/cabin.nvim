@@ -8,53 +8,156 @@ local M = {}
 -- }
 
 function M.setup(config)
-	local theme = {}
 	local cs = config.colors
 
-	theme = {
-		ColorColumn = { bg = cs.red_darker },
+	local theme = {
+		normal = {
+			fg = cs.grey300,
+			bg = cs.grey900,
+		},
+		float = {
+			fg = cs.grey300,
+			bg = cs.grey800,
+		},
+		status = {
+			fg = cs.grey300,
+			bg = cs.grey700,
+		},
+		vcs = {
+			add = { fg = cs.green500 },
+			remove = { fg = cs.red500 },
+			change = { fg = cs.blue500 },
+		},
+		diff = {
+			add = { bg = cs.green900 },
+			remove = { bg = cs.red900 },
+			change = { bg = cs.blue900 },
+		},
+		visual = {
+			bg = cs.yellow800,
+		},
+		numbers = {
+			fg = cs.yellow500,
+		},
+		semantic = {
+			success = {
+				fg = cs.grey100,
+				bg = cs.green900,
+			},
+			info = {
+				fg = cs.grey100,
+				bg = cs.blue900,
+			},
+			warn = {
+				fg = cs.grey100,
+				bg = cs.yellow900,
+			},
+			error = {
+				fg = cs.grey100,
+				bg = cs.red900,
+			},
+		},
+		diagnostic = {
+			info = {
+				fg = cs.blue400,
+				bg = cs.blue900,
+			},
+			hint = {
+				fg = cs.green400,
+				bg = cs.green900,
+			},
+			warn = {
+				fg = cs.yellow400,
+				bg = cs.yellow900,
+			},
+			error = {
+				fg = cs.red400,
+				bg = cs.red900,
+			},
+		},
+		search = {
+			bg = cs.yellow800,
+		},
+		pmenu = {
+			fg = cs.grey300,
+			bg = cs.grey700,
+		},
+		wildmenu = {
+			fg = cs.grey900,
+			bg = cs.yellow500,
+		},
+		qf = {
+			fg = cs.grey900,
+			bg = cs.green500,
+		},
+		syntax = {
+			-- Comment
+			comment = { fg = cs.cyan800 },
+			-- Constant
+			constant = { fg = cs.none },
+			string = { fg = cs.green500 },
+			char = { fg = cs.green700 },
+			number = { fg = cs.magenta800 },
+			-- Identifier
+			identifier = { fg = cs.none },
+			fn = { fg = cs.yellow400 },
+			-- Statement
+			statement = { fg = cs.orange500 },
+			label = { fg = cs.none },
+			-- PreProc
+			preproc = { fg = cs.magenta300 },
+			-- Type
+			type = { fg = cs.cyan600 },
+			-- Special
+			special = { fg = cs.none },
+			tag = { fg = cs.none },
+		},
+	}
+
+	local highlights = {
+		ColorColumn = theme.semantic.error,
 		Conceal = {},
 		Cursor = {},
 		CursorColumn = {},
 		CursorIM = { link = "Cursor" },
-		CursorLine = { bg = cs.shade_dark2 },
+		CursorLine = {},
 		CursorLineNr = {},
-		DiffAdd = { bg = cs.green_darker },
+		DiffAdd = theme.diff.add,
 		DiffChange = {},
-		DiffDelete = { bg = cs.red_darker },
-		DiffText = { bg = cs.blue_darker },
+		DiffDelete = theme.diff.remove,
+		DiffText = theme.diff.change,
 		Directory = { bold = true },
 		EndOfBuffer = { link = "NonText" },
-		ErrorMsg = { fg = cs.shade_light3, bg = cs.red_medium, bold = true },
+		ErrorMsg = vim.tbl_extend("force", theme.semantic.error, { bold = true }),
 		FoldColumn = { link = "Folded" },
-		Folded = { fg = cs.shade_light5, bg = cs.shade_dark2 },
-		IncSearch = { fg = cs.shade_dark1, bg = cs.yellow_light },
-		LineNr = { fg = cs.yellow_light },
+		Folded = {},
+		IncSearch = theme.search,
+		LineNr = theme.numbers,
 		LineNrAbove = { link = "LineNr" },
 		LineNrBelow = { link = "LineNr" },
 		MatchParen = { underline = true },
-		ModeMsg = { fg = cs.yellow_light, bold = true },
-		MoreMsg = { fg = cs.green_medium, bold = true },
+		ModeMsg = { bold = true },
+		MoreMsg = {},
 		MsgArea = { link = "Normal" },
 		MsgSeparator = { link = "MoreMsg" },
 		NonText = { link = "Normal" },
-		Normal = { fg = cs.shade_light3, bg = cs.shade_dark1 },
-		NormalFloat = { bg = cs.shade_dark3 },
+		Normal = theme.normal,
+		NormalFloat = theme.float,
 		NormalNC = { link = "Normal" },
-		Pmenu = { link = "NormalFloat" },
-		PmenuSbar = { link = "NormalFloat" },
-		PmenuSel = { fg = cs.shade_dark3, bg = cs.yellow_light },
-		PmenuThumb = { bg = cs.shade_dark4 },
-		Question = { fg = cs.green_medium },
-		QuickFixLine = { fg = cs.shade_dark1, bg = cs.green_medium },
-		Search = { fg = cs.shade_dark1, bg = cs.yellow_light },
-		SignColumn = { bg = cs.shade_dark2 },
+		Pmenu = theme.pmenu,
+		PmenuSbar = { link = "Pmenu" },
+		PmenuSel = theme.wildmenu,
+		PmenuThumb = { link = "NormalFloat" },
+		Question = theme.semantic.success,
+		QuickFixLine = theme.qf,
+		Search = theme.search,
+		SignColumn = {},
 		SpecialKey = {},
 		SpellBad = { undercurl = true },
 		SpellCap = { undercurl = true },
 		SpellLocal = { undercurl = true },
 		SpellRare = { undercurl = true },
-		StatusLine = { fg = cs.shade_dark1, bg = cs.shade_light3 },
+		StatusLine = theme.status,
 		StatusLineNC = { link = "NormalFloat" },
 		Substitute = { link = "Search" },
 		TabLine = {},
@@ -64,86 +167,88 @@ function M.setup(config)
 		TermCursorNC = { link = "Cursor" },
 		Title = {},
 		VertSplit = { link = "Normal" },
-		Visual = { bg = cs.shade_dark4 },
+		Visual = theme.visual,
 		VisualNOS = { link = "Visual" },
-		WarningMsg = { fg = cs.shade_dark1, bg = cs.yellow_light },
+		WarningMsg = theme.semantic.warn,
 		Whitespace = { link = "NonText" },
-		WildMenu = { fg = cs.shade_dark1, bg = cs.yellow_light },
+		WildMenu = theme.wildmenu,
 		lCursor = { link = "Cursor" },
 
-    -- Builtin highlight groups
+		-- Builtin highlight groups
 
-		Comment = { fg = cs.cyan_medium, italic = true }, -- any comment (perfered group)
+		Comment = vim.tbl_extend("force", theme.syntax.comment, { italic = true }), -- any comment (perfered group)
 
-		Constant = {}, -- any constant (perferred group)
-		String = { fg = cs.green_medium }, --  a string constant: "this is a string"
-		Character = { fg = cs.green_dark, italic = true }, --  a character constant: 'c', '\n'
-		Number = { fg = cs.magenta_medium }, --  a number constant: 234, 0xff
-		Boolean = { fg = cs.magenta_medium }, --  a boolean constant: TRUE, false
+		Constant = theme.status.constant, -- any constant (perferred group)
+		String = theme.syntax.string, --  a string constant: "this is a string"
+		Character = vim.tbl_extend("force", theme.syntax.char, { italic = true }), --  a character constant: 'c', '\n'
+		Number = theme.syntax.number, --  a number constant: 234, 0xff
+		Boolean = { link = "Constant" }, --  a boolean constant: TRUE, false
 		Float = { link = "Number" }, --  a floating point constant: 2.3e10
 
-		Identifier = {}, -- any variable name (perferred group)
-		Function = { fg = cs.yellow_light, bold = true }, --  function name (also: methods for classes)
+		Identifier = theme.syntax.identifier, -- any variable name (perferred group)
+		Function = vim.tbl_extend("force", theme.syntax.fn, { bold = true }), --  function name (also: methods for classes)
 
-		Statement = { fg = cs.orange_medium, bold = true }, -- any statement (perferred group)
+		Statement = vim.tbl_extend("force", theme.syntax.statement, { bold = true }), -- any statement (perferred group)
 		Conditional = { link = "Statement" }, -- if, then, else, endif, switch, etc.
 		Repeat = { link = "Statement" }, -- for, do, while, etc.
-		Label = {}, --  case, default, etc.
+		Label = theme.syntax.label, --  case, default, etc.
 		Operator = { link = "Statement" }, --  "sizeof", "+", "*", etc.
 		Keyword = { link = "Statement" }, -- any other keyword
 		Exception = { link = "Statement" }, -- try, catch, throw
 
-		PreProc = { fg = cs.magenta_light }, -- generic Preprocessor (perferred group)
+		PreProc = theme.syntax.preproc, -- generic Preprocessor (perferred group)
 		Include = { link = "PreProc" }, --  preprocessor #include
 		Define = { link = "PreProc" }, --  preprocessor #define
 		Macro = { link = "PreProc" }, --  same as Define
 		PreCondit = { link = "PreProc" }, --  preprocessor #if, #else, #endif, etc.
 
-		Type = { fg = cs.cyan_light }, -- int, long, char, etc. (perferred group)
+		Type = theme.syntax.type, -- int, long, char, etc. (perferred group)
 		StorageClass = { link = "Type" }, --  static, register, volatile, etc.
 		Structure = { link = "Type" }, --  struct, union, enum, etc.
 		Typedef = { link = "Type" }, --  A typedef
 
-		Special = {}, -- any special symbol (perferred group)
+		Special = theme.syntax.special, -- any special symbol (perferred group)
 		SpecialChar = { link = "Charater" }, --  special character in a constant
-		Tag = { bold = true }, --  you can use CTRL-] on this
+		Tag = vim.tbl_extend("force", theme.syntax.tag, { bold = true }), --  you can use CTRL-] on this
 		Delimiter = { link = "Special" }, --  character that needs attention
 		SpecialComment = { link = "Special" }, --  special things inside a comment
 		Debug = { link = "Special" }, --  debugging statements
 
 		Underlined = { underline = true }, -- text that stands out, HTML links (perferred group)
-
 		Ignore = {}, -- left blank, hidden  |hl-Ignore| (perferred group)
-
-		Error = { underline = true, sp = cs.red_medium }, -- any erroneous construct (perferred group)
-
-		Todo = { fg = cs.shade_dark3, bg = cs.yellow_light }, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-
-    -- Treesitter
+		Error = { underline = true, sp = theme.semantic.error.bg }, -- any erroneous construct (perferred group)
+		Todo = theme.semantic.warn, -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 		-- Diagnostics
 
-		DiagnosticError = { fg = cs.red_light, bg = cs.red_darker },
-		DiagnosticWarn = { fg = cs.yellow_light, bg = cs.yellow_darker },
-		DiagnosticInfo = { fg = cs.blue_light, bg = cs.blue_darker },
-		DiagnosticHint = { fg = cs.green_light, bg = cs.green_darker },
-		-- DiagnosticSignError = {},
-		-- DiagnosticSignWarn = {},
-		-- DiagnosticSignInfo = {},
-		-- DiagnosticSignHint = {},
+		DiagnosticError = theme.diagnostic.error,
+		DiagnosticWarn = theme.diagnostic.warn,
+		DiagnosticInfo = theme.diagnostic.info,
+		DiagnosticHint = theme.diagnostic.hint,
+		DiagnosticSignError ={ fg = theme.diagnostic.error.fg },
+		DiagnosticSignWarn = { fg = theme.diagnostic.warn.fg },
+		DiagnosticSignInfo = { fg = theme.diagnostic.info.fg },
+		DiagnosticSignHint = { fg = theme.diagnostic.hint.fg },
 		-- DiagnosticUnderlineError = {},
 		-- DiagnosticUnderlineWarn = {},
 		-- DiagnosticUnderlineInfo = {},
 		-- DiagnosticUnderlineHint = {},
-		-- DiagnosticVirtualTextError = {},
+		-- DiagnosticVirtualTextError ={},
 		-- DiagnosticVirtualTextWarn = {},
 		-- DiagnosticVirtualTextInfo = {},
 		-- DiagnosticVirtualTextHint = {},
+		DiagnosticFloatingError ={ fg = theme.diagnostic.error.fg },
+		DiagnosticFloatingWarn = { fg = theme.diagnostic.warn.fg },
+		DiagnosticFloatingInfo = { fg = theme.diagnostic.info.fg },
+		DiagnosticFloatingHint = { fg = theme.diagnostic.hint.fg },
+
+		-- Treesitter
+
 
 		-- GitSigns
-		GitSignsAdd = { fg = cs.green_light, bg = cs.shade_dark2 },
-		GitSignsChange = { fg = cs.blue_light, bg = cs.shade_dark2 },
-		GitSignsDelete = { fg = cs.red_light, bg = cs.shade_dark2 },
+		GitSignsAdd = theme.vcs.add,
+		GitSignsChange = theme.vcs.change,
+		GitSignsDelete = theme.vcs.remove,
 
 		-- Quickfix list
 		-- qfFileName = {},
@@ -264,6 +369,8 @@ function M.setup(config)
 		-- FZFSpinner = { fg = cs.fg },
 	}
 
+	return highlights
+
 	-- Fzf
 	-- TODO: Move FZF global var somewhere more obvious
 	-- vim.g.fzf_colors = {
@@ -281,8 +388,6 @@ function M.setup(config)
 	-- 	spinner = { "fg", "FZFSpinner" },
 	-- 	header = { "fg", "FZFHeader" },
 	-- }
-
-	return theme
 end
 
 return M

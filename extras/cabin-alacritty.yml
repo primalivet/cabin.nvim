@@ -1,26 +1,26 @@
 # Cabin theme
 colors:
   primary:
-    background:    '#211D18' # shade_dark1
-    foreground:    '#D4C0B0' # shade_light3
+    background:    '#292724' # grey900
+    foreground:    '#C4C0BB' # grey300
   cursor:
     text: CellBackground
     cursor: CellForeground
   normal:
-    black:         '#211D18' # shade_dark1
-    blue:          '#69B3DD' # blue_lighter
-    cyan:          '#077264' # cyan_medium
-    green:         '#59A83E' # green_medium
-    purple:        '#C92778' # magenta_medium
-    red:           '#B93B00' # red_medium
-    white:         '#C5B697' # shade_light6
-    yellow:        '#F88F24' # orange_medium
+    black:         '#292724' # grey900
+    blue:          '#2487BB' # blue600
+    cyan:          '#008068' # cyan800
+    green:         '#97C026' # green600
+    purple:        '#F3597F' # magenta400
+    red:           '#F36825' # red500
+    white:         '#ACA7A0' # grey400
+    yellow:        '#FFC01A' # yellow500
   bright:
-    black:   '#403B31' # shade_dark3
-    blue:    '#93c8e6' # blue_light
-    cyan:    '#00B594' # cyan_light
-    green:   '#A8D52B' # green_light
-    purple:  '#F57796' # magenta_light
-    red:     '#EE560D' # red_light
-    white:   '#D4C0B0' # shade_light3
-    yellow:  '#FFC427' #yellow_light
+    black:   '#5F5B53' # grey700
+    blue:    '#97CAE7' # blue300
+    cyan:    '#80FFE8' # cyan300
+    green:   '#D3EA95' # green300
+    purple:  '#F688A3' # magenta300
+    red:     '#F8AB86' # red300
+    white:   '#C4C0BB' # grey300
+    yellow:  '#FFDC80' # yellow300
