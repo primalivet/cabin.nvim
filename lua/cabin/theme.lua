@@ -107,7 +107,7 @@ function M.setup(config)
 			-- PreProc
 			preproc = { fg = cs.magenta300 },
 			-- Type
-			type = { fg = cs.cyan600 },
+			type = { fg = cs.cyan700 },
 			-- Special
 			special = { fg = cs.none },
 			tag = { fg = cs.none },
