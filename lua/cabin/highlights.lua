@@ -1,119 +1,6 @@
 local M = {}
--- HiGroup {
---   name: String,
---   link?: String (GroupName)
---   fg: String (HEX)
---   bg: String (HEX)
---   style: String (Bold,Italics,Reverse)
--- }
 
-function M.setup(config)
-	local cs = config.colors
-
-	local theme = {
-		normal = {
-			fg = cs.grey300,
-			bg = cs.grey900,
-		},
-		float = {
-			fg = cs.grey300,
-			bg = cs.grey800,
-		},
-		status = {
-			fg = cs.grey300,
-			bg = cs.grey700,
-		},
-		vcs = {
-			add = { fg = cs.green500 },
-			remove = { fg = cs.red500 },
-			change = { fg = cs.blue500 },
-		},
-		diff = {
-			add = { bg = cs.green900 },
-			remove = { bg = cs.red900 },
-			change = { bg = cs.blue900 },
-		},
-		visual = {
-			bg = cs.yellow800,
-		},
-		numbers = {
-			fg = cs.yellow500,
-		},
-		semantic = {
-			success = {
-				fg = cs.grey100,
-				bg = cs.green900,
-			},
-			info = {
-				fg = cs.grey100,
-				bg = cs.blue900,
-			},
-			warn = {
-				fg = cs.grey100,
-				bg = cs.yellow900,
-			},
-			error = {
-				fg = cs.grey100,
-				bg = cs.red900,
-			},
-		},
-		diagnostic = {
-			info = {
-				fg = cs.blue400,
-				bg = cs.blue900,
-			},
-			hint = {
-				fg = cs.green400,
-				bg = cs.green900,
-			},
-			warn = {
-				fg = cs.yellow400,
-				bg = cs.yellow900,
-			},
-			error = {
-				fg = cs.red400,
-				bg = cs.red900,
-			},
-		},
-		search = {
-			bg = cs.yellow800,
-		},
-		pmenu = {
-			fg = cs.grey300,
-			bg = cs.grey700,
-		},
-		wildmenu = {
-			fg = cs.grey900,
-			bg = cs.yellow500,
-		},
-		qf = {
-			fg = cs.grey900,
-			bg = cs.green500,
-		},
-		syntax = {
-			-- Comment
-			comment = { fg = cs.cyan800 },
-			-- Constant
-			constant = { fg = cs.none },
-			string = { fg = cs.green500 },
-			char = { fg = cs.green700 },
-			number = { fg = cs.magenta800 },
-			-- Identifier
-			identifier = { fg = cs.none },
-			fn = { fg = cs.yellow400 },
-			-- Statement
-			statement = { fg = cs.orange500 },
-			label = { fg = cs.none },
-			-- PreProc
-			preproc = { fg = cs.magenta300 },
-			-- Type
-			type = { fg = cs.cyan700 },
-			-- Special
-			special = { fg = cs.none },
-			tag = { fg = cs.none },
-		},
-	}
-
+function M.setup(theme)
 	local highlights = {
 		ColorColumn = theme.semantic.error,
 		Conceal = {},
@@ -176,19 +63,19 @@ function M.setup(config)
 
 		-- Builtin highlight groups
 
-		Comment = vim.tbl_extend("force", theme.syntax.comment, { italic = true }), -- any comment (perfered group)
+		Comment = theme.syntax.comment, -- any comment (perfered group)
 
-		Constant = theme.status.constant, -- any constant (perferred group)
+		Constant = theme.syntax.constant, -- any constant (perferred group)
 		String = theme.syntax.string, --  a string constant: "this is a string"
-		Character = vim.tbl_extend("force", theme.syntax.char, { italic = true }), --  a character constant: 'c', '\n'
+		Character = theme.syntax.char, --  a character constant: 'c', '\n'
 		Number = theme.syntax.number, --  a number constant: 234, 0xff
 		Boolean = { link = "Constant" }, --  a boolean constant: TRUE, false
 		Float = { link = "Number" }, --  a floating point constant: 2.3e10
 
 		Identifier = theme.syntax.identifier, -- any variable name (perferred group)
-		Function = vim.tbl_extend("force", theme.syntax.fn, { bold = true }), --  function name (also: methods for classes)
+		Function = theme.syntax.fn, --  function name (also: methods for classes)
 
-		Statement = vim.tbl_extend("force", theme.syntax.statement, { bold = true }), -- any statement (perferred group)
+		Statement = theme.syntax.statement,  -- any statement (perferred group)
 		Conditional = { link = "Statement" }, -- if, then, else, endif, switch, etc.
 		Repeat = { link = "Statement" }, -- for, do, while, etc.
 		Label = theme.syntax.label, --  case, default, etc.
@@ -209,7 +96,7 @@ function M.setup(config)
 
 		Special = theme.syntax.special, -- any special symbol (perferred group)
 		SpecialChar = { link = "Charater" }, --  special character in a constant
-		Tag = vim.tbl_extend("force", theme.syntax.tag, { bold = true }), --  you can use CTRL-] on this
+		Tag = theme.syntax.tag, --  you can use CTRL-] on this
 		Delimiter = { link = "Special" }, --  character that needs attention
 		SpecialComment = { link = "Special" }, --  special things inside a comment
 		Debug = { link = "Special" }, --  debugging statements
