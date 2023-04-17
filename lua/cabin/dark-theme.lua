@@ -89,7 +89,7 @@ function M.setup(colors)
 			constant = { fg = cs.none },
 			string = { fg = cs.green500 },
 			char = { fg = cs.green700 },
-			number = { fg = cs.magenta800 },
+			number = { fg = cs.magenta300 },
 			-- Identifier
 			identifier = { fg = cs.none },
 			fn = { fg = cs.yellow400 },
